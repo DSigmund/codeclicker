@@ -1,6 +1,8 @@
 <h1>CodeClicker v{{version}}</h1>
 <p>Lines of Code: {{linesOfCode}}</p>
+<p>Lines of Code per Click: {{addLinesOfCode}}</p>
 <button (click)="writeLineOfCode()"><span class="blink">&#9608;</span> Write Code</button>
+<button (click)="buyMoreLinesOfCodePerClick()" *ngIf="unlock.buyMoreLinesOfCodePerClick">More Lines Of Code per Click! ( {{nextCost.buyMoreLinesOfCodePerClick}} Lines)</button>
 <ul id="log">
   <li *ngFor="let line of log">
     {{line}}
