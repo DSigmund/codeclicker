@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { version } from '../../package.json';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent {
   title = 'codeclicker';
+  public version: string = version;
+
   linesOfCode = 0;
   addLinesOfCode = 1;
   log = [];
