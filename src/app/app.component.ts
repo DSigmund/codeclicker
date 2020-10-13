@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 
@@ -86,6 +87,18 @@ export class AppComponent {
       this[obj]++;
       localStorage.setItem(obj, this[obj].toString());
     }
+  }
+
+  public reset(): void {
+    this.autoClicker = 0;
+    this.addLinesOfCode = 1;
+    this.linesOfCode = 0;
+    this.unlock = {
+      buyMoreLinesOfCodePerClick: false,
+      buyAutoClicker: false
+    };
+    this.log = [];
+    localStorage.clear();
   }
 
   ngOnInit() {
