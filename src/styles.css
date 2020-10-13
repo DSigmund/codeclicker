@@ -1,1 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  background-color: black;
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 14pt;
+}
+
+button {
+  border: 1px solid white;
+  border-radius: 10px;
+  background-color: black;
+  color:white;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  overflow: hidden;
+}
+button:hover {
+  background-color: white;
+  color:black;
+}
+.blink {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+#log {
+  position: absolute;
+  bottom: 0px;
+  width: 90%;
+  height: 50%;
+  overflow: auto;
+  list-style: none;
+  margin-left: 0;
+  padding-left: 1em;
+  text-indent: -1em;
+}
