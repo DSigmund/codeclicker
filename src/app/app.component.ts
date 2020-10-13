@@ -92,10 +92,14 @@ export class AppComponent {
     this.linesOfCode = parseInt(localStorage.getItem('linesOfCode'), 10) || 0;
     this.addLinesOfCode = parseInt(localStorage.getItem('addLinesOfCode'), 10) || 1;
     this.autoClicker = parseInt(localStorage.getItem('autoClicker'), 10) || 0;
+
     if (localStorage.getItem('unlock')) {
       this.unlock = JSON.parse(localStorage.getItem('unlock'));
     }
+
     this.nextCost.buyMoreLinesOfCodePerClick = this.cost.buyMoreLinesOfCodePerClick[this.addLinesOfCode];
+    this.nextCost.buyAutoClicker = this.cost.buyAutoClicker[this.autoClicker + 1];
+
     const sentence = '> Loaded ' + this.linesOfCode + ' line' + (this.linesOfCode > 1 ? 's' : '') + ' of code.';
     this.log.push(sentence);
     this.subscription = this.source.subscribe(val => {
