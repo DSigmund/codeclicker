@@ -1,3 +1,4 @@
 # TODO
 
-- add autoclicker
+- better in game logs
+- refactoring
