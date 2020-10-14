@@ -2,8 +2,6 @@
 
 - achievements
 
-- multiplier bots
-
 - better in game logs
 - refactoring
 

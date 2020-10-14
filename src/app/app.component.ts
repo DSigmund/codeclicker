@@ -19,6 +19,8 @@ export class AppComponent implements OnInit, OnDestroy {
   linesOfCode = 0;
   addLinesOfCode = 1;
   autoClicker = 0;
+  autoClickerMulti = 1;
+
   log = [];
   adjectives = [
     'beautiful',
@@ -28,16 +30,19 @@ export class AppComponent implements OnInit, OnDestroy {
   ];
   unlocks = [
     'buyMoreLinesOfCodePerClick',
-    'buyAutoClicker'
+    'buyAutoClicker',
+    'buyAutoClickerMulti'
   ];
   unlockAt = {
     buyMoreLinesOfCodePerClick: 10,
-    buyAutoClicker: 100
+    buyAutoClicker: 100,
+    buyAutoClickerMulti: 200
   };
 
   unlock = {
     buyMoreLinesOfCodePerClick: false,
-    buyAutoClicker: false
+    buyAutoClicker: false,
+    buyAutoClickerMulti: false
   };
 
   cost = {
@@ -48,12 +53,17 @@ export class AppComponent implements OnInit, OnDestroy {
     buyAutoClicker: {
       initial: 100,
       growth: 100
+    },
+    buyAutoClickerMulti: {
+      initial: 200,
+      growth: 120
     }
   };
 
   nextCost = {
     buyMoreLinesOfCodePerClick: 10,
-    buyAutoClicker: 100
+    buyAutoClicker: 100,
+    buyAutoClickerMulti: 200
   };
 
   public writeLineOfCode(): void {
@@ -78,7 +88,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private calcCostForLevel(level: number, base: number, growth: number): number {
-    return base * Math.pow((1 + growth / 100), level);
+    return Math.floor(base * Math.pow((1 + growth / 100), level));
   }
 
   public reset(): void {
@@ -87,10 +97,12 @@ export class AppComponent implements OnInit, OnDestroy {
     this.linesOfCode = 0;
     this.unlock = {
       buyMoreLinesOfCodePerClick: false,
-      buyAutoClicker: false
+      buyAutoClicker: false,
+      buyAutoClickerMulti: false
     };
     this.nextCost.buyMoreLinesOfCodePerClick = this.calcCostForLevel(this.addLinesOfCode, this.cost.buyMoreLinesOfCodePerClick.initial, this.cost.buyMoreLinesOfCodePerClick.growth);
     this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
+    this.nextCost.buyAutoClickerMulti = this.calcCostForLevel(this.autoClickerMulti, this.cost.buyAutoClickerMulti.initial, this.cost.buyAutoClickerMulti.growth);
 
     this.log = [];
     localStorage.clear();
@@ -107,12 +119,13 @@ export class AppComponent implements OnInit, OnDestroy {
 
     this.nextCost.buyMoreLinesOfCodePerClick = this.calcCostForLevel(this.addLinesOfCode, this.cost.buyMoreLinesOfCodePerClick.initial, this.cost.buyMoreLinesOfCodePerClick.growth);
     this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
+    this.nextCost.buyAutoClickerMulti = this.calcCostForLevel(this.autoClickerMulti, this.cost.buyAutoClickerMulti.initial, this.cost.buyAutoClickerMulti.growth);
 
     const sentence = '> Loaded ' + this.linesOfCode + ' line' + (this.linesOfCode > 1 ? 's' : '') + ' of code.';
     this.log.push(sentence);
     this.subscription = this.source.subscribe(val => {
       this.unlocker();
-      this.linesOfCode += this.autoClicker;
+      this.linesOfCode += this.autoClicker * this.autoClickerMulti;
       // TODO: here is the cycle
       localStorage.setItem('linesOfCode', this.linesOfCode.toString());
     });
