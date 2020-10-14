@@ -66,6 +66,34 @@ export class AppComponent implements OnInit, OnDestroy {
     buyAutoClickerMulti: 200
   };
 
+  achievementsUnlocked = false;
+  achievements = [
+    {
+      name: 'Click a Button',
+      unlocked: false,
+      unlockAt: {
+        what: 'linesOfCode',
+        value: 1
+      }
+    },
+    {
+      name: '1000 Lines of Code',
+      unlocked: false,
+      unlockAt: {
+        what: 'linesOfCode',
+        value: 1000
+      }
+    },
+    {
+      name: 'Army of Bots',
+      unlocked: false,
+      unlockAt: {
+        what: 'autoClicker',
+        value: 10
+      }
+    }
+  ];
+
   public writeLineOfCode(): void {
     this.linesOfCode += this.addLinesOfCode;
     const randomAdjective = this.adjectives[Math.floor(Math.random() * this.adjectives.length)];
@@ -117,16 +145,24 @@ export class AppComponent implements OnInit, OnDestroy {
       this.unlock = JSON.parse(localStorage.getItem('unlock'));
     }
 
+    if (localStorage.getItem('unlockedAchievements')) {
+      const unlockedAchievements = JSON.parse(localStorage.getItem('unlockedAchievements'));
+      for (const uA of unlockedAchievements) {
+        this.achievements.find(x => x.name === uA).unlocked = true;
+        this.achievementsUnlocked = true;
+      }
+    }
+
     this.nextCost.buyMoreLinesOfCodePerClick = this.calcCostForLevel(this.addLinesOfCode, this.cost.buyMoreLinesOfCodePerClick.initial, this.cost.buyMoreLinesOfCodePerClick.growth);
     this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
     this.nextCost.buyAutoClickerMulti = this.calcCostForLevel(this.autoClickerMulti, this.cost.buyAutoClickerMulti.initial, this.cost.buyAutoClickerMulti.growth);
 
     const sentence = '> Loaded ' + this.linesOfCode + ' line' + (this.linesOfCode > 1 ? 's' : '') + ' of code.';
     this.log.push(sentence);
-    this.subscription = this.source.subscribe(val => {
+    this.subscription = this.source.subscribe(val => { // cycle every second
       this.unlocker();
+      this.unlockAchievements();
       this.linesOfCode += this.autoClicker * this.autoClickerMulti;
-      // TODO: here is the cycle
       localStorage.setItem('linesOfCode', this.linesOfCode.toString());
     });
   }
@@ -138,8 +174,19 @@ export class AppComponent implements OnInit, OnDestroy {
     for (const u of this.unlocks) {
       if (!this.unlock[u] && this.linesOfCode >= this.unlockAt[u]) {
         this.unlock[u] = true;
+        localStorage.setItem('unlock', JSON.stringify(this.unlock));
       }
     }
-    localStorage.setItem('unlock', JSON.stringify(this.unlock));
+  }
+  private unlockAchievements() {
+    for (const a of this.achievements) {
+      if (!a.unlocked && this[a.unlockAt.what] >= a.unlockAt.value) {
+        this.achievements.find(x => x.name === a.name).unlocked = true;
+        this.achievementsUnlocked = true;
+        const unlockedAchievements = JSON.parse(localStorage.getItem('unlockedAchievements')) || [];
+        unlockedAchievements.push(a.name);
+        localStorage.setItem('unlockedAchievements', JSON.stringify(unlockedAchievements));
+      }
+    }
   }
 }

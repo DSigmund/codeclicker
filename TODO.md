@@ -1,7 +1,5 @@
 # TODO
 
-- achievements
-
 - better in game logs
 - refactoring
 

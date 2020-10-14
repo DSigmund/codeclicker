@@ -3,10 +3,17 @@
 <p *ngIf="addLinesOfCode > 1">Lines of Code per Click: {{addLinesOfCode}}</p>
 <p *ngIf="autoClicker > 0">Lines of Code via Bot: {{autoClicker * autoClickerMulti}}/s ({{autoClicker}} Bots on Level {{autoClickerMulti}})</p>
 <button (click)="writeLineOfCode()"><span class="blink">&#9608;</span> Write Code</button>
+<br/>
 <button (click)="buy('buyMoreLinesOfCodePerClick', 'addLinesOfCode')" *ngIf="unlock.buyMoreLinesOfCodePerClick">More Lines Of Code per Click! ( {{nextCost.buyMoreLinesOfCodePerClick}} Lines)</button>
 <button (click)="buy('buyAutoClicker', 'autoClicker')" *ngIf="unlock.buyAutoClicker">Buy a Bot! ( {{nextCost.buyAutoClicker}} Lines)</button>
 <button (click)="buy('buyAutoClickerMulti', 'autoClickerMulti')" *ngIf="unlock.buyAutoClickerMulti">Enhance the Bots! ( {{nextCost.buyAutoClickerMulti}} Lines)</button>
-
+<br/>
+<h2 *ngIf="achievementsUnlocked">Achievements</h2>
+<div *ngFor="let a of achievements">
+  <div *ngIf="a.unlocked" class="achievement">
+    {{a.name}}
+  </div>
+</div>
 <ul id="log">
   <li *ngFor="let line of log">
     {{line}}
