@@ -97,20 +97,8 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public reset(): void {
-    this.autoClicker = 0;
-    this.addLinesOfCode = 1;
-    this.linesOfCode = 0;
-    this.unlock = {
-      buyMoreLinesOfCodePerClick: false,
-      buyAutoClicker: false,
-      buyAutoClickerMulti: false
-    };
-    this.nextCost.buyMoreLinesOfCodePerClick = this.calcCostForLevel(this.addLinesOfCode, this.cost.buyMoreLinesOfCodePerClick.initial, this.cost.buyMoreLinesOfCodePerClick.growth);
-    this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
-    this.nextCost.buyAutoClickerMulti = this.calcCostForLevel(this.autoClickerMulti, this.cost.buyAutoClickerMulti.initial, this.cost.buyAutoClickerMulti.growth);
-
-    this.log = [];
     localStorage.clear();
+    window.location.reload();
   }
 
   ngOnInit() {
