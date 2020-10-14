@@ -1,5 +1,4 @@
-import { ThrowStmt } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { interval, Subscription } from 'rxjs';
 
 import { version } from '../../package.json';
@@ -10,7 +9,7 @@ import { version } from '../../package.json';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   title = 'codeclicker';
@@ -43,18 +42,12 @@ export class AppComponent {
 
   cost = {
     buyMoreLinesOfCodePerClick: {
-      1: 10,
-      2: 100,
-      3: 250,
-      4: 500,
-      5: 1000
+      initial: 10,
+      growth: 100
     },
     buyAutoClicker: {
-      1: 100,
-      2: 1000,
-      3: 2500,
-      4: 5000,
-      5: 10000
+      initial: 100,
+      growth: 100
     }
   };
 
@@ -74,19 +67,18 @@ export class AppComponent {
   public buy(what: string, obj): void {
     let cost;
     let nextCost;
-    if (this[obj] === 0) { // objects that start with zero (addlines starts with 1)
-      cost = this.cost[what][this[obj] + 1];
-      nextCost = this.cost[what][this[obj] + 2];
-    } else {
-      cost = this.cost[what][this[obj]];
-      nextCost = this.cost[what][this[obj] + 1];
-    }
+    cost = this.calcCostForLevel(this[obj], this.cost[what].initial, this.cost[what].growth);
+    nextCost = this.calcCostForLevel(this[obj] + 1, this.cost[what].initial, this.cost[what].growth);
     if (this.linesOfCode >= cost) {
       this.linesOfCode -= cost;
       this.nextCost[what] = nextCost;
       this[obj]++;
       localStorage.setItem(obj, this[obj].toString());
     }
+  }
+
+  private calcCostForLevel(level: number, base: number, growth: number): number {
+    return base * Math.pow((1 + growth / 100), level);
   }
 
   public reset(): void {
@@ -97,6 +89,9 @@ export class AppComponent {
       buyMoreLinesOfCodePerClick: false,
       buyAutoClicker: false
     };
+    this.nextCost.buyMoreLinesOfCodePerClick = this.calcCostForLevel(this.addLinesOfCode, this.cost.buyMoreLinesOfCodePerClick.initial, this.cost.buyMoreLinesOfCodePerClick.growth);
+    this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
+
     this.log = [];
     localStorage.clear();
   }
@@ -110,8 +105,8 @@ export class AppComponent {
       this.unlock = JSON.parse(localStorage.getItem('unlock'));
     }
 
-    this.nextCost.buyMoreLinesOfCodePerClick = this.cost.buyMoreLinesOfCodePerClick[this.addLinesOfCode];
-    this.nextCost.buyAutoClicker = this.cost.buyAutoClicker[this.autoClicker + 1];
+    this.nextCost.buyMoreLinesOfCodePerClick = this.calcCostForLevel(this.addLinesOfCode, this.cost.buyMoreLinesOfCodePerClick.initial, this.cost.buyMoreLinesOfCodePerClick.growth);
+    this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
 
     const sentence = '> Loaded ' + this.linesOfCode + ' line' + (this.linesOfCode > 1 ? 's' : '') + ' of code.';
     this.log.push(sentence);

@@ -1,5 +1,9 @@
 # TODO
 
+- achievements
+
+- multiplier bots
+
 - better in game logs
 - refactoring
 
@@ -11,3 +15,6 @@ O = 1000
 in a box (10 x 10)
 
 > Use (the force) modulo (linesOfCode % 1000 > O)
+
+
+--> sell code for money
