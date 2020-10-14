@@ -3,6 +3,8 @@ import { interval, Subscription } from 'rxjs';
 
 import { version } from '../../package.json';
 
+import achievements from '../../achievements.json';
+
 
 @Component({
   selector: 'app-root',
@@ -67,32 +69,7 @@ export class AppComponent implements OnInit, OnDestroy {
   };
 
   achievementsUnlocked = false;
-  achievements = [
-    {
-      name: 'Click a Button',
-      unlocked: false,
-      unlockAt: {
-        what: 'linesOfCode',
-        value: 1
-      }
-    },
-    {
-      name: '1000 Lines of Code',
-      unlocked: false,
-      unlockAt: {
-        what: 'linesOfCode',
-        value: 1000
-      }
-    },
-    {
-      name: 'Army of Bots',
-      unlocked: false,
-      unlockAt: {
-        what: 'autoClicker',
-        value: 10
-      }
-    }
-  ];
+  achievements = achievements;
 
   public writeLineOfCode(): void {
     this.linesOfCode += this.addLinesOfCode;

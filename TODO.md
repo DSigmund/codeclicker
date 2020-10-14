@@ -1,7 +1,7 @@
 # TODO
 
 - better in game logs
-- refactoring
+- refactoring of buyObjects and into json files
 
 - ascii display of lines of code:
 . = 1

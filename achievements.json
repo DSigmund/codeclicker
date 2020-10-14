@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Click a Button",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "linesOfCode",
+      "value": 1
+    }
+  },
+  {
+    "name": "1000 Lines of Code",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "linesOfCode",
+      "value": 1000
+    }
+  },
+  {
+    "name": "Army of Bots",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "autoClicker",
+      "value": 10
+    }
+  }
+]
