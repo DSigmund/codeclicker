@@ -1,7 +1,5 @@
 # TODO
 
-- remove imgame logs
-
 - refactoring of buyObjects and into json files
 
 - allow keyboard input
@@ -33,7 +31,7 @@ in a box (10 x 10)
 
 > into JSON
 
-> clean HTML (loops)
+> clean HTML (loops) https://angular.io/api/common/KeyValuePipe
 
 
 - button "spend a coffee" > paypal

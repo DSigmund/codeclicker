@@ -1,14 +1,16 @@
 [
   {
     "name": "Click a Button",
+    "description":"You actually managed to click the only visible Button. Impressive.",
     "unlocked": false,
     "unlockAt": {
-      "what": "linesOfCode",
+      "what": "writeLineOfCodeClicked",
       "value": 1
     }
   },
   {
     "name": "1000 Lines of Code",
+    "description":"Sounds like much, but this is merely the beginning...",
     "unlocked": false,
     "unlockAt": {
       "what": "linesOfCode",
@@ -17,6 +19,7 @@
   },
   {
     "name": "Army of Bots",
+    "description":"Wow. 10 Bots! I wonder how long this took you...",
     "unlocked": false,
     "unlockAt": {
       "what": "autoClicker",

@@ -10,7 +10,7 @@
 <br/>
 <h2 *ngIf="achievementsUnlocked">Achievements</h2>
 <div *ngFor="let a of achievements">
-  <div *ngIf="a.unlocked" class="achievement">
+  <div *ngIf="a.unlocked" class="achievement" title="{{a.description}}">
     {{a.name}}
   </div>
 </div>

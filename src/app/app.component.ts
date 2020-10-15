@@ -18,7 +18,13 @@ export class AppComponent implements OnInit, OnDestroy {
   public version: string = version;
   source = interval(1000);
 
+  elements = {
+
+  };
+
+
   linesOfCode = 0;
+  writeLineOfCodeClicked = 0;
   addLinesOfCode = 1;
   autoClicker = 0;
   autoClickerMulti = 1;
@@ -66,7 +72,9 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public writeLineOfCode(): void {
     this.linesOfCode += this.addLinesOfCode;
+    this.writeLineOfCodeClicked += 1;
     localStorage.setItem('linesOfCode', this.linesOfCode.toString());
+    localStorage.setItem('writeLineOfCodeClicked', this.writeLineOfCodeClicked.toString());
   }
   public buy(what: string, obj): void {
     let cost;
@@ -92,6 +100,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.linesOfCode = parseInt(localStorage.getItem('linesOfCode'), 10) || 0;
+    this.writeLineOfCodeClicked = parseInt(localStorage.getItem('writeLineOfCodeClicked'), 10) || 0;
     this.addLinesOfCode = parseInt(localStorage.getItem('addLinesOfCode'), 10) || 1;
     this.autoClicker = parseInt(localStorage.getItem('autoClicker'), 10) || 0;
 
