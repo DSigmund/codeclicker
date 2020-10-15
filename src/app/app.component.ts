@@ -23,13 +23,6 @@ export class AppComponent implements OnInit, OnDestroy {
   autoClicker = 0;
   autoClickerMulti = 1;
 
-  log = [];
-  adjectives = [
-    'beautiful',
-    'nice',
-    'terrific',
-    'bad'
-  ];
   unlocks = [
     'buyMoreLinesOfCodePerClick',
     'buyAutoClicker',
@@ -73,10 +66,6 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public writeLineOfCode(): void {
     this.linesOfCode += this.addLinesOfCode;
-    const randomAdjective = this.adjectives[Math.floor(Math.random() * this.adjectives.length)];
-    const sentence = '> You wrote ' + this.addLinesOfCode + ' line' + (this.addLinesOfCode > 1 ? 's' : '') + ' of ' + randomAdjective + ' code.';
-    this.log.push(sentence);
-    document.querySelector('#log li:last-child').scrollIntoView();
     localStorage.setItem('linesOfCode', this.linesOfCode.toString());
   }
   public buy(what: string, obj): void {
@@ -122,8 +111,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
     this.nextCost.buyAutoClickerMulti = this.calcCostForLevel(this.autoClickerMulti, this.cost.buyAutoClickerMulti.initial, this.cost.buyAutoClickerMulti.growth);
 
-    const sentence = '> Loaded ' + this.linesOfCode + ' line' + (this.linesOfCode > 1 ? 's' : '') + ' of code.';
-    this.log.push(sentence);
     this.subscription = this.source.subscribe(val => { // cycle every second
       this.unlocker();
       this.unlockAchievements();

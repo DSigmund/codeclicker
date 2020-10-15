@@ -31,18 +31,6 @@ button:hover {
   }
 }
 
-#log {
-  position: absolute;
-  bottom: 0px;
-  width: 90%;
-  height: 30%;
-  overflow: auto;
-  list-style: none;
-  margin-left: 0;
-  padding-left: 1em;
-  text-indent: -1em;
-}
-
 footer {
   position: absolute;
   top:10px;
