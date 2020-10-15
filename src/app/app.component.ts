@@ -62,6 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       },
       autoClicker: {
+        name: 'Bots',
         value: 0,
         level: 0,
         unlockAt: {
@@ -107,7 +108,7 @@ export class AppComponent implements OnInit, OnDestroy {
     this.elements[element].button.clicked += 1;
   }
 
-  public buyThing(element: string, what: string): void {
+  public buy(element: string, what: string): void {
     const cost = this.calcCostForLevel(
       this.elements[element][what].level,
       this.elements[element][what].cost.initial,
@@ -179,7 +180,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.elements[e].autoClicker.unlocked = true;
         }
         if (!el.autoClickerMulti.unlocked &&
-          this.elements[el.autoClicker.autoClickerMulti.element].value >= el.autoClickerMulti.unlockAt.value) {
+          this.elements[el.autoClickerMulti.unlockAt.element].value >= el.autoClickerMulti.unlockAt.value) {
           this.elements[e].autoClickerMulti.unlocked = true;
         }
       }
@@ -223,7 +224,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   private unlockAchievements() {
     for (const a of this.achievements) {
-      if (!a.unlocked && this[a.unlockAt.what] >= a.unlockAt.value) {
+      if (!a.unlocked && this.returnValueFromElements(a.unlockAt.what) >= a.unlockAt.value) {
         this.achievements.find(x => x.name === a.name).unlocked = true;
         this.achievementsUnlocked = true;
         const unlockedAchievements = JSON.parse(localStorage.getItem('unlockedAchievements')) || [];
@@ -231,5 +232,8 @@ export class AppComponent implements OnInit, OnDestroy {
         localStorage.setItem('unlockedAchievements', JSON.stringify(unlockedAchievements));
       }
     }
+  }
+  private returnValueFromElements(path: string) {
+    return path.split('.').reduce((o, i) => o[i], this.elements);
   }
 }

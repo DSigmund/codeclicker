@@ -1,12 +1,43 @@
 <h1>CodeClicker v{{version}}</h1>
-<p *ngIf="linesOfCode > 0">Lines of Code: {{linesOfCode}}</p>
-<p *ngIf="addLinesOfCode > 1">Lines of Code per Click: {{addLinesOfCode}}</p>
-<p *ngIf="autoClicker > 0">Lines of Code via Bot: {{autoClicker * autoClickerMulti}}/s ({{autoClicker}} Bots on Level {{autoClickerMulti}})</p>
-<button (click)="writeLineOfCode()"><span class="blink">&#9608;</span> Write Code</button>
-<br/>
-<button (click)="buy('buyMoreLinesOfCodePerClick', 'addLinesOfCode')" *ngIf="unlock.buyMoreLinesOfCodePerClick">More Lines Of Code per Click! ( {{nextCost.buyMoreLinesOfCodePerClick}} Lines)</button>
-<button (click)="buy('buyAutoClicker', 'autoClicker')" *ngIf="unlock.buyAutoClicker">Buy a Bot! ( {{nextCost.buyAutoClicker}} Lines)</button>
-<button (click)="buy('buyAutoClickerMulti', 'autoClickerMulti')" *ngIf="unlock.buyAutoClickerMulti">Enhance the Bots! ( {{nextCost.buyAutoClickerMulti}} Lines)</button>
+<table id="values">
+  <tr *ngFor="let element of elements | keyvalue">
+    <td *ngIf="element.value.value > 0">
+      {{element.value.name}}: 
+      {{element.value.value}}
+    </td>
+    <td *ngIf="element.value.addValue.value > 1">
+      {{element.value.short}}/click: 
+      {{element.value.addValue.value}}
+    </td>
+    <td *ngIf="element.value.autoClicker.value > 0" title="({{element.value.autoClicker.value}} {{element.value.autoClicker.name}} on Level {{element.value.autoClickerMulti.value}})">
+      {{element.value.short}}/{{element.value.autoClicker.name}}: 
+      {{element.value.autoClicker.value * element.value.autoClickerMulti.value}}/s
+    </td>
+  </tr>
+</table>
+<table>
+  <tr *ngFor="let element of elements | keyvalue">
+    <td *ngIf="element.value.button.unlocked">
+      <button (click)="singleClick(element.key)">{{element.value.button.title}}</button>
+    </td>
+    <td *ngIf="element.value.addValue.unlocked">
+      <button (click)="buy(element.key, 'addValue')">
+        {{element.value.addValue.button.title}} ({{element.value.addValue.cost.next}} {{element.value.short}})
+      </button>
+    </td>
+    <td *ngIf="element.value.autoClicker.unlocked">
+      <button (click)="buy(element.key, 'autoClicker')">
+        {{element.value.autoClicker.button.title}} ({{element.value.autoClicker.cost.next}} {{element.value.short}})
+      </button>
+    </td>
+    <td *ngIf="element.value.autoClickerMulti.unlocked">
+      <button (click)="buy(element.key, 'autoClickerMulti')">
+        {{element.value.autoClickerMulti.button.title}} ({{element.value.autoClickerMulti.cost.next}} {{element.value.short}})
+      </button>
+    </td>
+  </tr>
+</table>
+
 <br/>
 <h2 *ngIf="achievementsUnlocked">Achievements</h2>
 <div *ngFor="let a of achievements">

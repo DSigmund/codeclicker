@@ -1,6 +1,10 @@
 # TODO
 
-- refactoring of buyObjects and into json files
+- create functions
+- autoCreateFunctions
+
+
+
 
 - allow keyboard input
 
@@ -14,8 +18,7 @@ in a box (10 x 10)
 > Use (the force) modulo (linesOfCode % 1000 > O)
 
 
-- create functions
-- autoCreateFunctions
+
 
 - organise into layers.
 - layer 0: linesOfCode .oO
@@ -29,6 +32,4 @@ in a box (10 x 10)
 - layer 8: ?
 - layer n: ?
 
-> into JSON
-
-> clean HTML (loops) https://angular.io/api/common/KeyValuePipe
+> elements into JSON
