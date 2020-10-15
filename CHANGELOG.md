@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v0.6.5 (2020-10-15)
+
+* Added description to achievements
+* Added Paypal-Link
+
 ## v0.6.4 (2020-10-15)
 
 * Removed in-game logs
