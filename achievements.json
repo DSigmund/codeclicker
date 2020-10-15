@@ -4,7 +4,7 @@
     "description":"You actually managed to click the only visible Button. Impressive.",
     "unlocked": false,
     "unlockAt": {
-      "what": "writeLineOfCodeClicked",
+      "what": "elements.linesOfCode.button.clicked",
       "value": 1
     }
   },
@@ -13,7 +13,7 @@
     "description":"Sounds like much, but this is merely the beginning...",
     "unlocked": false,
     "unlockAt": {
-      "what": "linesOfCode",
+      "what": "elements.linesOfCode.value",
       "value": 1000
     }
   },
@@ -22,7 +22,7 @@
     "description":"Wow. 10 Bots! I wonder how long this took you...",
     "unlocked": false,
     "unlockAt": {
-      "what": "autoClicker",
+      "what": "elements.linesOfCode.autoClicker.value",
       "value": 10
     }
   }

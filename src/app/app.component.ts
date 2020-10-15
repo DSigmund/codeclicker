@@ -13,79 +13,116 @@ import achievements from '../../achievements.json';
 })
 export class AppComponent implements OnInit, OnDestroy {
   subscription: Subscription;
+  subscriptionSave: Subscription;
 
   title = 'codeclicker';
   public version: string = version;
   source = interval(1000);
+  sourceSave = interval(10000);
 
   elements = {
-
-  };
-
-
-  linesOfCode = 0;
-  writeLineOfCodeClicked = 0;
-  addLinesOfCode = 1;
-  autoClicker = 0;
-  autoClickerMulti = 1;
-
-  unlocks = [
-    'buyMoreLinesOfCodePerClick',
-    'buyAutoClicker',
-    'buyAutoClickerMulti'
-  ];
-  unlockAt = {
-    buyMoreLinesOfCodePerClick: 10,
-    buyAutoClicker: 100,
-    buyAutoClickerMulti: 200
-  };
-
-  unlock = {
-    buyMoreLinesOfCodePerClick: false,
-    buyAutoClicker: false,
-    buyAutoClickerMulti: false
-  };
-
-  cost = {
-    buyMoreLinesOfCodePerClick: {
-      initial: 10,
-      growth: 100
-    },
-    buyAutoClicker: {
-      initial: 100,
-      growth: 100
-    },
-    buyAutoClickerMulti: {
-      initial: 200,
-      growth: 120
+    linesOfCode: {
+      name: 'Lines of Code',
+      short: 'LoC',
+      ascii: {
+        1: '.',
+        10: 'o',
+        100: 'O'
+      },
+      unlockAt: {
+        element: 'linesOfCode',
+        value: 0
+      },
+      unlocked: true,
+      value: 0,
+      button: {
+        title: 'Write Code',
+        clicked: 0,
+        unlockAt: {
+          element: 'linesOfCode',
+          value: 0
+        },
+        unlocked: true
+      },
+      addValue: {
+        value: 1,
+        level: 0,
+        unlockAt: {
+          element: 'linesOfCode',
+          value: 10
+        },
+        unlocked: false,
+        cost: {
+          initial: 10,
+          growth: 100,
+          next: 10
+        },
+        button: {
+          title: 'More Lines of Code per Click!'
+        }
+      },
+      autoClicker: {
+        value: 0,
+        level: 0,
+        unlockAt: {
+          element: 'linesOfCode',
+          value: 100
+        },
+        unlocked: false,
+        cost: {
+          initial: 100,
+          growth: 100,
+          next: 100
+        },
+        button: {
+          title: 'Buy a Bot!'
+        }
+      },
+      autoClickerMulti: {
+        value: 1,
+        level: 0,
+        unlockAt: {
+          element: 'linesOfCode',
+          value: 200
+        },
+        unlocked: false,
+        cost: {
+          initial: 200,
+          growth: 120,
+          next: 200
+        },
+        button: {
+          title: 'Enhance the Bots!'
+        }
+      }
     }
   };
 
-  nextCost = {
-    buyMoreLinesOfCodePerClick: 10,
-    buyAutoClicker: 100,
-    buyAutoClickerMulti: 200
-  };
 
   achievementsUnlocked = false;
   achievements = achievements;
 
-  public writeLineOfCode(): void {
-    this.linesOfCode += this.addLinesOfCode;
-    this.writeLineOfCodeClicked += 1;
-    localStorage.setItem('linesOfCode', this.linesOfCode.toString());
-    localStorage.setItem('writeLineOfCodeClicked', this.writeLineOfCodeClicked.toString());
+  public singleClick(element: string): void {
+    this.elements[element].value += this.elements[element].addValue.value;
+    this.elements[element].button.clicked += 1;
   }
-  public buy(what: string, obj): void {
-    let cost;
-    let nextCost;
-    cost = this.calcCostForLevel(this[obj], this.cost[what].initial, this.cost[what].growth);
-    nextCost = this.calcCostForLevel(this[obj] + 1, this.cost[what].initial, this.cost[what].growth);
-    if (this.linesOfCode >= cost) {
-      this.linesOfCode -= cost;
-      this.nextCost[what] = nextCost;
-      this[obj]++;
-      localStorage.setItem(obj, this[obj].toString());
+
+  public buyThing(element: string, what: string): void {
+    const cost = this.calcCostForLevel(
+      this.elements[element][what].level,
+      this.elements[element][what].cost.initial,
+      this.elements[element][what].cost.growth
+    );
+    const nextCost = this.calcCostForLevel(
+      this.elements[element][what].level + 1,
+      this.elements[element][what].cost.initial,
+      this.elements[element][what].cost.growth
+    );
+    if (this.elements[element].value >= cost) {
+      this.elements[element].value -= cost;
+      this.elements[element][what].level += 1;
+      this.elements[element][what].value += 1;
+      this.elements[element][what].cost.next = nextCost;
     }
   }
 
@@ -99,13 +136,81 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.linesOfCode = parseInt(localStorage.getItem('linesOfCode'), 10) || 0;
-    this.writeLineOfCodeClicked = parseInt(localStorage.getItem('writeLineOfCodeClicked'), 10) || 0;
-    this.addLinesOfCode = parseInt(localStorage.getItem('addLinesOfCode'), 10) || 1;
-    this.autoClicker = parseInt(localStorage.getItem('autoClicker'), 10) || 0;
+    this.load();
+    this.subscription = this.source.subscribe(val => { // cycle every second
+      this.unlocker();
+      this.unlockAchievements();
+      this.autoClicker();
+    });
+    this.subscriptionSave = this.sourceSave.subscribe(val => { // cycle every 10 seconds
+      this.save();
+    });
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
-    if (localStorage.getItem('unlock')) {
-      this.unlock = JSON.parse(localStorage.getItem('unlock'));
+  private autoClicker() {
+    for (const e in this.elements) {
+      if (this.elements.hasOwnProperty(e)) {
+        this.elements[e].value += this.elements[e].autoClicker.value * this.elements[e].autoClickerMulti.value ;
+      }
+    }
+  }
+
+  private unlocker() {
+    for (const e in this.elements) {
+      if (this.elements.hasOwnProperty(e)) {
+        const el = this.elements[e];
+        if (!el.unlocked &&
+          this.elements[el.unlockAt.element].value >= el.unlockAt.value) {
+          this.elements[e].unlocked = true;
+        }
+        if (!el.button.unlocked &&
+          this.elements[el.button.unlockAt.element].value >= el.button.unlockAt.value) {
+          this.elements[e].button.unlocked = true;
+        }
+        if (!el.addValue.unlocked &&
+          this.elements[el.addValue.unlockAt.element].value >= el.addValue.unlockAt.value) {
+          this.elements[e].addValue.unlocked = true;
+        }
+        if (!el.autoClicker.unlocked &&
+          this.elements[el.autoClicker.unlockAt.element].value >= el.autoClicker.unlockAt.value) {
+          this.elements[e].autoClicker.unlocked = true;
+        }
+        if (!el.autoClickerMulti.unlocked &&
+          this.elements[el.autoClicker.autoClickerMulti.element].value >= el.autoClickerMulti.unlockAt.value) {
+          this.elements[e].autoClickerMulti.unlocked = true;
+        }
+      }
+    }
+  }
+  private save() {
+    localStorage.setItem('elements', JSON.stringify(this.elements));
+  }
+  private load() {
+    if (localStorage.getItem('elements')) {
+      const loadedElements = JSON.parse(localStorage.getItem('elements'));
+      for (const e in this.elements) {
+        if (this.elements.hasOwnProperty(e)) {
+          this.elements[e].value = loadedElements[e].value;
+          this.elements[e].unlocked = loadedElements[e].unlocked;
+          this.elements[e].button.clicked = loadedElements[e].button.clicked;
+          this.elements[e].button.unlocked = loadedElements[e].button.unlocked;
+          this.elements[e].addValue.level = loadedElements[e].addValue.level;
+          this.elements[e].addValue.value = loadedElements[e].addValue.value;
+          this.elements[e].addValue.unlocked = loadedElements[e].addValue.unlocked;
+          this.elements[e].addValue.cost.next = loadedElements[e].addValue.cost.next;
+          this.elements[e].autoClicker.level = loadedElements[e].autoClicker.level;
+          this.elements[e].autoClicker.value = loadedElements[e].autoClicker.value;
+          this.elements[e].autoClicker.unlocked = loadedElements[e].autoClicker.unlocked;
+          this.elements[e].autoClicker.cost.next = loadedElements[e].autoClicker.cost.next;
+          this.elements[e].autoClickerMulti.level = loadedElements[e].autoClickerMulti.level;
+          this.elements[e].autoClickerMulti.value = loadedElements[e].autoClickerMulti.value;
+          this.elements[e].autoClickerMulti.unlocked = loadedElements[e].autoClickerMulti.unlocked;
+          this.elements[e].autoClickerMulti.cost.next = loadedElements[e].autoClickerMulti.cost.next;
+        }
+      }
     }
 
     if (localStorage.getItem('unlockedAchievements')) {
@@ -113,29 +218,6 @@ export class AppComponent implements OnInit, OnDestroy {
       for (const uA of unlockedAchievements) {
         this.achievements.find(x => x.name === uA).unlocked = true;
         this.achievementsUnlocked = true;
-      }
-    }
-
-    this.nextCost.buyMoreLinesOfCodePerClick = this.calcCostForLevel(this.addLinesOfCode, this.cost.buyMoreLinesOfCodePerClick.initial, this.cost.buyMoreLinesOfCodePerClick.growth);
-    this.nextCost.buyAutoClicker = this.calcCostForLevel(this.autoClicker, this.cost.buyAutoClicker.initial, this.cost.buyAutoClicker.growth);
-    this.nextCost.buyAutoClickerMulti = this.calcCostForLevel(this.autoClickerMulti, this.cost.buyAutoClickerMulti.initial, this.cost.buyAutoClickerMulti.growth);
-
-    this.subscription = this.source.subscribe(val => { // cycle every second
-      this.unlocker();
-      this.unlockAchievements();
-      this.linesOfCode += this.autoClicker * this.autoClickerMulti;
-      localStorage.setItem('linesOfCode', this.linesOfCode.toString());
-    });
-  }
-  ngOnDestroy() {
-    this.subscription.unsubscribe();
-  }
-
-  private unlocker() {
-    for (const u of this.unlocks) {
-      if (!this.unlock[u] && this.linesOfCode >= this.unlockAt[u]) {
-        this.unlock[u] = true;
-        localStorage.setItem('unlock', JSON.stringify(this.unlock));
       }
     }
   }
