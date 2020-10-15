@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v0.6.3 (2020-10-15)
+
+* Added Changelog
+
+
 ## v0.6.2 (2020-10-14)
 
 * Better reset
