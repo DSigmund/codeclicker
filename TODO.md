@@ -32,8 +32,3 @@ in a box (10 x 10)
 > into JSON
 
 > clean HTML (loops) https://angular.io/api/common/KeyValuePipe
-
-
-- button "spend a coffee" > paypal
-
-- achievements. Add description (visible as title, hover)
