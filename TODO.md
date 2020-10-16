@@ -1,11 +1,5 @@
 # TODO
 
-- create functions
-- autoCreateFunctions
-
-
-
-
 - allow keyboard input
 
 - ascii display of lines of code:
@@ -21,8 +15,7 @@ in a box (10 x 10)
 
 
 - organise into layers.
-- layer 0: linesOfCode .oO
-- layer 1: functions :fF
+
 - layer 2: classes _cC
 - layer 3: applications *aA
 - layer 4: microservices #mM

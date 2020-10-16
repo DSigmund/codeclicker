@@ -4,7 +4,7 @@ import { interval, Subscription } from 'rxjs';
 import { version } from '../../package.json';
 
 import achievements from '../../achievements.json';
-
+import elements from '../../elements.json';
 
 @Component({
   selector: 'app-root',
@@ -20,92 +20,20 @@ export class AppComponent implements OnInit, OnDestroy {
   source = interval(1000);
   sourceSave = interval(10000);
 
-  elements = {
-    linesOfCode: {
-      name: 'Lines of Code',
-      short: 'LoC',
-      ascii: {
-        1: '.',
-        10: 'o',
-        100: 'O'
-      },
-      unlockAt: {
-        element: 'linesOfCode',
-        value: 0
-      },
-      unlocked: true,
-      value: 0,
-      button: {
-        title: 'Write Code',
-        clicked: 0,
-        unlockAt: {
-          element: 'linesOfCode',
-          value: 0
-        },
-        unlocked: true
-      },
-      addValue: {
-        value: 1,
-        level: 0,
-        unlockAt: {
-          element: 'linesOfCode',
-          value: 10
-        },
-        unlocked: false,
-        cost: {
-          initial: 10,
-          growth: 100,
-          next: 10
-        },
-        button: {
-          title: 'More Lines of Code per Click!'
-        }
-      },
-      autoClicker: {
-        name: 'Bots',
-        value: 0,
-        level: 0,
-        unlockAt: {
-          element: 'linesOfCode',
-          value: 100
-        },
-        unlocked: false,
-        cost: {
-          initial: 100,
-          growth: 100,
-          next: 100
-        },
-        button: {
-          title: 'Buy a Bot!'
-        }
-      },
-      autoClickerMulti: {
-        value: 1,
-        level: 0,
-        unlockAt: {
-          element: 'linesOfCode',
-          value: 200
-        },
-        unlocked: false,
-        cost: {
-          initial: 200,
-          growth: 120,
-          next: 200
-        },
-        button: {
-          title: 'Enhance the Bots!'
-        }
-      }
-    }
-  };
-
+  elements = elements;
 
   achievementsUnlocked = false;
   achievements = achievements;
 
   public singleClick(element: string): void {
-    this.elements[element].value += this.elements[element].addValue.value;
-    this.elements[element].button.clicked += 1;
+    if (this.elements[this.elements[element].cost.element].value >= this.elements[element].cost.value) {
+      this.elements[this.elements[element].cost.element].value -= this.elements[element].cost.value;
+      this.elements[element].value += this.elements[element].addValue.value;
+      this.elements[element].button.clicked += 1;
+    }
+  }
+  public displaySingleClickCost(element: string): string {
+    return '(' + this.elements[element].cost.value + ' ' + this.elements[this.elements[element].cost.element].short + ')';
   }
 
   public buy(element: string, what: string): void {

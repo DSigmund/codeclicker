@@ -1,0 +1,162 @@
+{
+  "linesOfCode": {
+    "name": "Lines of Code",
+    "short": "LoC",
+    "ascii": {
+      "1": ".",
+      "10": "o",
+      "100": "O"
+    },
+    "unlockAt": {
+      "element": "linesOfCode",
+      "value": 0
+    },
+    "unlocked": true,
+    "cost": {
+      "element": "linesOfCode",
+      "value": 0
+    },
+    "value": 0,
+    "button": {
+      "title": "Write Code",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "linesOfCode",
+        "value": 0
+      },
+      "unlocked": true
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "linesOfCode",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More Lines of Code per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "Bots",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "linesOfCode",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Buy a Bot!"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "linesOfCode",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "Enhance the Bots!"
+      }
+    }
+  },
+  "functions": {
+    "name": "Functions",
+    "short": "f()",
+    "ascii": {
+      "1": ":",
+      "10": "f",
+      "100": "F"
+    },
+    "unlockAt": {
+      "element": "functions",
+      "value": 1
+    },
+    "unlocked": false,
+    "cost": {
+      "element": "linesOfCode",
+      "value": 1000
+    },
+    "value": 0,
+    "button": {
+      "title": "Create Functions",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "linesOfCode",
+        "value": 1000
+      },
+      "unlocked": false
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "functions",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More Functions per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "Coder",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "functions",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Train a Coder!"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "functions",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "Better Training!"
+      }
+    }
+  }
+}

@@ -25,5 +25,32 @@
       "what": "linesOfCode.autoClicker.value",
       "value": 10
     }
+  },
+  {
+    "name": "public static void main(args)",
+    "description":"On you go! Your first Function!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "functions.value",
+      "value": 1
+    }
+  },
+  {
+    "name": "Functional programming?",
+    "description":"i am not really sure if you understood this ...",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "functions.value",
+      "value": 1000
+    }
+  },
+  {
+    "name": "Sweatshop",
+    "description":"20 Coders? There should be many more!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "functions.autoClicker.value",
+      "value": 20
+    }
   }
 ]
