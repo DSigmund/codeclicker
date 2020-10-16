@@ -12,10 +12,6 @@ in a box (10 x 10)
 > Use (the force) modulo (linesOfCode % 1000 > O)
 
 
-
-
-- organise into layers.
-
 - layer 2: classes _cC
 - layer 3: applications *aA
 - layer 4: microservices #mM
@@ -24,5 +20,3 @@ in a box (10 x 10)
 - layer 7: saas $sS
 - layer 8: ?
 - layer n: ?
-
-> elements into JSON
