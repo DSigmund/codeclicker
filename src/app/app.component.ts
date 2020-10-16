@@ -5,6 +5,7 @@ import { version } from '../../package.json';
 
 import achievements from '../../achievements.json';
 import elements from '../../elements.json';
+import config from '../../config.json';
 
 @Component({
   selector: 'app-root',
@@ -15,21 +16,27 @@ export class AppComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   subscriptionSave: Subscription;
 
-  title = 'codeclicker';
   public version: string = version;
-  source = interval(1000);
-  sourceSave = interval(10000);
+
+  config = config;
+  source = interval(config.cycle);
+  sourceSave = interval(config.saveEvery);
 
   elements = elements;
 
   achievementsUnlocked = false;
   achievements = achievements;
 
+  firstClick = false;
+
+  ascii = ''
+
   public singleClick(element: string): void {
     if (this.elements[this.elements[element].cost.element].value >= this.elements[element].cost.value) {
       this.elements[this.elements[element].cost.element].value -= this.elements[element].cost.value;
       this.elements[element].value += this.elements[element].addValue.value;
       this.elements[element].button.clicked += 1;
+      this.firstClick = true;
     }
   }
   public displaySingleClickCost(element: string): string {
@@ -70,6 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.unlocker();
       this.unlockAchievements();
       this.autoClicker();
+      this.drawASCII();
     });
     this.subscriptionSave = this.sourceSave.subscribe(val => { // cycle every 10 seconds
       this.save();
@@ -77,6 +85,24 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  private drawASCII(): void {
+    this.ascii = '';
+    for (const e in this.elements) {
+      if (this.elements.hasOwnProperty(e)) {
+        const qoutient = this.elements[e].value / 100;
+        const remainder =  this.elements[e].value % 100;
+        const hundreds = this.elements[e].ascii['100'].repeat(qoutient);
+
+        const quotient1 = remainder / 10;
+        const remainder1 =  remainder % 10;
+        const tens = this.elements[e].ascii['10'].repeat(quotient1);
+
+        const single = this.elements[e].ascii['1'].repeat(remainder1);
+        this.ascii += hundreds + tens + single;
+      }
+    }
   }
 
   private autoClicker() {

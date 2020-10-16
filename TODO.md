@@ -2,15 +2,6 @@
 
 - allow keyboard input
 
-- ascii display of lines of code:
-. = 1
-o = 100
-O = 1000
-
-in a box (10 x 10)
-
-> Use (the force) modulo (linesOfCode % 1000 > O)
-
 
 - layer 2: classes _cC
 - layer 3: applications *aA

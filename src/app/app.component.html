@@ -1,7 +1,7 @@
 <h1>CodeClicker v{{version}}</h1>
 <table id="values">
   <tr *ngFor="let element of elements | keyvalue">
-    <td *ngIf="element.value.value > 0">
+    <td *ngIf="element.value.value > 0 || element.value.unlocked">
       {{element.value.name}}: 
       {{element.value.value}}
     </td>
@@ -50,6 +50,7 @@
     {{a.name}}
   </div>
 </div>
+<div id="codeBox" *ngIf="firstClick">{{ascii}}</div>
 <footer>
   <button (click)="reset()">reset</button>
   <a href="https://paypal.me/DSigmund/2.50?locale.x=en_US" target="_blank" rel="noopener noreferrer">Gift a Coffee</a>
