@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v0.8.0 (2020-10-16)
+
+* Added Ascii Output
+
 ## v0.7.0 (2020-10-16)
 
 * Added Functions, moved elements to json
