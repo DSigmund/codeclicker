@@ -91,16 +91,23 @@ export class AppComponent implements OnInit, OnDestroy {
     this.ascii = '';
     for (const e in this.elements) {
       if (this.elements.hasOwnProperty(e)) {
-        const qoutient = this.elements[e].value / 100;
-        const remainder =  this.elements[e].value % 100;
-        const hundreds = this.elements[e].ascii['100'].repeat(qoutient);
+        const quotient10000 = this.elements[e].value / 10000;
+        const remainder10000 =  this.elements[e].value % 10000;
+        this.ascii += this.elements[e].ascii['10000'].repeat(quotient10000);
 
-        const quotient1 = remainder / 10;
-        const remainder1 =  remainder % 10;
-        const tens = this.elements[e].ascii['10'].repeat(quotient1);
+        const qoutient1000 = remainder10000 / 1000;
+        const remainder1000 =  remainder10000 % 1000;
+        this.ascii += this.elements[e].ascii['1000'].repeat(qoutient1000);
 
-        const single = this.elements[e].ascii['1'].repeat(remainder1);
-        this.ascii += hundreds + tens + single;
+        const quotient100 = remainder1000 / 100;
+        const remainder100 =  remainder1000 % 100;
+        this.ascii += this.elements[e].ascii['100'].repeat(quotient100);
+
+        const quotient10 = remainder100 / 10;
+        const remainder10 =  remainder100 % 10;
+        this.ascii += this.elements[e].ascii['10'].repeat(quotient10);
+
+        this.ascii += this.elements[e].ascii['1'].repeat(remainder10);
       }
     }
   }

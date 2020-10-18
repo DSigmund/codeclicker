@@ -3,7 +3,6 @@
 - allow keyboard input
 
 
-- layer 2: classes _cC
 - layer 3: applications *aA
 - layer 4: microservices #mM
 - layer 5: it-services +iI
