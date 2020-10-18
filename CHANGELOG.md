@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v0.10.2 (2020-10-18)
+
+* Added achievements for applications
+
+## v0.10.1 (2020-10-18)
+
+* Added Achievements for Classes
+
 ## v0.10.0 (2020-10-18)
 
 * Added Microservices
