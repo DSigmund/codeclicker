@@ -244,5 +244,87 @@
         "title": "More Coffee!"
       }
     }
+  },
+  "applications": {
+    "name": "Applications",
+    "short": "a**",
+    "ascii": {
+      "1": "*",
+      "10": "a",
+      "100": "A",
+      "1000":"α",
+      "10000": "ϖ"
+    },
+    "unlockAt": {
+      "element": "applications",
+      "value": 1
+    },
+    "unlocked": false,
+    "cost": {
+      "element": "classes",
+      "value": 1000
+    },
+    "value": 0,
+    "button": {
+      "title": "Create Applications",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "classes",
+        "value": 1000
+      },
+      "unlocked": false
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "applications",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More Applications per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "DevOps",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "applications",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Conjure a DevOps-Spec!"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "applications",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "Energydrinks ...!"
+      }
+    }
   }
 }

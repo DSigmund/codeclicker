@@ -3,10 +3,8 @@
 - allow keyboard input
 
 
-- layer 3: applications *aA
-- layer 4: microservices #mM
-- layer 5: it-services +iI
-- layer 6: end2end-app @eE
-- layer 7: saas $sS
-- layer 8: ?
-- layer n: ?
+- layer 3: applications *aAαϖ
+- layer 4: microservices #mMμν
+- layer 5: it-services +iIιξ
+- layer 6: end2end-app @eEηε
+- layer 7: saas $sSΣσ
