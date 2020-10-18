@@ -29,7 +29,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   firstClick = false;
 
-  ascii = ''
+  ascii = '';
 
   public singleClick(element: string): void {
     if (this.elements[this.elements[element].cost.element].value >= this.elements[element].cost.value) {
@@ -108,7 +108,10 @@ export class AppComponent implements OnInit, OnDestroy {
   private autoClicker() {
     for (const e in this.elements) {
       if (this.elements.hasOwnProperty(e)) {
-        this.elements[e].value += this.elements[e].autoClicker.value * this.elements[e].autoClickerMulti.value ;
+        if (this.elements[this.elements[e].cost.element].value >= (this.elements[e].cost.value * this.elements[e].autoClicker.value)) {
+          this.elements[this.elements[e].cost.element].value -= (this.elements[e].cost.value * this.elements[e].autoClicker.value);
+          this.elements[e].value += this.elements[e].autoClicker.value * this.elements[e].autoClickerMulti.value ;
+        }
       }
     }
   }
