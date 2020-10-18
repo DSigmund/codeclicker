@@ -52,5 +52,41 @@
       "what": "functions.autoClicker.value",
       "value": 20
     }
+  },
+  {
+    "name": "public Program(){}",
+    "description":"Going OOP now, aren't we?",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "classes.value",
+      "value": 1
+    }
+  },
+  {
+    "name": "Enterprise Coding",
+    "description":"for every class needs its subclasses",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "classes.value",
+      "value": 1000
+    }
+  },
+  {
+    "name": "Startup",
+    "description":"30 Developers in one startup? impressive!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "classes.autoClicker.value",
+      "value": 30
+    }
+  },
+  {
+    "name": "Coffeine Rush",
+    "description":"Be careful with that much coffee",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "classes.autoClickerMulti.value",
+      "value": 50
+    }
   }
 ]
