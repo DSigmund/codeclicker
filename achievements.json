@@ -88,5 +88,41 @@
       "what": "classes.autoClickerMulti.value",
       "value": 50
     }
+  },
+  {
+    "name": "Hello World",
+    "description":"How cute, your first ever app :-)",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "applications.value",
+      "value": 1
+    }
+  },
+  {
+    "name": "Publisher",
+    "description":"thats an impressive number of apps. can you support them all?",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "applications.value",
+      "value": 1000
+    }
+  },
+  {
+    "name": "Bug Boss",
+    "description":"That many devs must cause a lot of bugs ...",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "applications.autoClicker.value",
+      "value": 40
+    }
+  },
+  {
+    "name": "Crunch-Time",
+    "description":"Not enough time? Buy more drinks!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "applications.autoClickerMulti.value",
+      "value": 50
+    }
   }
 ]
