@@ -18,7 +18,7 @@
 <table>
   <tr *ngFor="let element of elements | keyvalue">
     <td *ngIf="element.value.button.unlocked">
-      <button (click)="singleClick(element.key)">
+      <button (click)="singleClick(element.key)" id="{{element.key}}Click">
         {{element.value.button.title}}
         <span *ngIf="element.value.cost.value > 0">
           {{displaySingleClickCost(element.key)}}

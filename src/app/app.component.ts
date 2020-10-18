@@ -95,15 +95,15 @@ export class AppComponent implements OnInit, OnDestroy {
         const remainder10000 =  this.elements[e].value % 10000;
         this.ascii += this.elements[e].ascii['10000'].repeat(quotient10000);
 
-        const qoutient1000 = remainder10000 / 1000;
+        const qoutient1000 = (remainder10000 > 1) ? remainder10000 / 1000 : this.elements[e].value / 1000;
         const remainder1000 =  remainder10000 % 1000;
         this.ascii += this.elements[e].ascii['1000'].repeat(qoutient1000);
 
-        const quotient100 = remainder1000 / 100;
+        const quotient100 = (remainder1000 > 1) ? remainder1000 / 100 : this.elements[e].value / 100;
         const remainder100 =  remainder1000 % 100;
         this.ascii += this.elements[e].ascii['100'].repeat(quotient100);
 
-        const quotient10 = remainder100 / 10;
+        const quotient10 = (remainder100 > 1) ? remainder100 / 10 : this.elements[e].value / 10;
         const remainder10 =  remainder100 % 10;
         this.ascii += this.elements[e].ascii['10'].repeat(quotient10);
 
