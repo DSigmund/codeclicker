@@ -27,6 +27,15 @@
     }
   },
   {
+    "name": "Advanced AI 101",
+    "description":"They are smarter than you i think ...",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "linesOfCode.autoClickerMulti.value",
+      "value": 10
+    }
+  },
+  {
     "name": "public static void main(args)",
     "description":"On you go! Your first Function!",
     "unlocked": false,
@@ -50,6 +59,15 @@
     "unlocked": false,
     "unlockAt": {
       "what": "functions.autoClicker.value",
+      "value": 20
+    }
+  },
+  {
+    "name": "My Coder Academia",
+    "description":"Your Coders are training well. Keep up!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "functions.autoClickerMulti.value",
       "value": 20
     }
   },
@@ -109,7 +127,7 @@
   },
   {
     "name": "Bug Boss",
-    "description":"That many devs must cause a lot of bugs ...",
+    "description":"That many devsops-guys must cause a lot of bugs ...",
     "unlocked": false,
     "unlockAt": {
       "what": "applications.autoClicker.value",
@@ -122,6 +140,42 @@
     "unlocked": false,
     "unlockAt": {
       "what": "applications.autoClickerMulti.value",
+      "value": 50
+    }
+  },
+  {
+    "name": "Thats the Way",
+    "description":"MicroServices are the future",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "microservices.value",
+      "value": 1
+    }
+  },
+  {
+    "name": "Many Micros",
+    "description":"How will you manage them?",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "microservices.value",
+      "value": 1000
+    }
+  },
+  {
+    "name": "Plan me",
+    "description":"Thats a lot of Architects",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "microservices.autoClicker.value",
+      "value": 50
+    }
+  },
+  {
+    "name": "List over List",
+    "description":"We all love our Excel-Sheets",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "microservices.autoClickerMulti.value",
       "value": 50
     }
   }
