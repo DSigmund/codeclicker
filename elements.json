@@ -326,5 +326,87 @@
         "title": "Energydrinks ...!"
       }
     }
+  },
+  "microservices": {
+    "name": "MicroServices",
+    "short": "m#",
+    "ascii": {
+      "1": "#",
+      "10": "m",
+      "100": "M",
+      "1000":"μ",
+      "10000": "ν"
+    },
+    "unlockAt": {
+      "element": "microservices",
+      "value": 1
+    },
+    "unlocked": false,
+    "cost": {
+      "element": "applications",
+      "value": 1000
+    },
+    "value": 0,
+    "button": {
+      "title": "Create MicroServices",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "applications",
+        "value": 1000
+      },
+      "unlocked": false
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "microservices",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More MicroServices per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "Architect",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "microservices",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Find an Architect!"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "microservices",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "Excel-Sheets"
+      }
+    }
   }
 }
