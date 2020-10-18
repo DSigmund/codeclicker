@@ -5,7 +5,9 @@
     "ascii": {
       "1": ".",
       "10": "o",
-      "100": "O"
+      "100": "O",
+      "1000":"Θ",
+      "10000": "θ"
     },
     "unlockAt": {
       "element": "linesOfCode",
@@ -85,7 +87,9 @@
     "ascii": {
       "1": ":",
       "10": "f",
-      "100": "F"
+      "100": "F",
+      "1000": "Φ",
+      "10000": "φ"
     },
     "unlockAt": {
       "element": "functions",
@@ -156,6 +160,88 @@
       },
       "button": {
         "title": "Better Training!"
+      }
+    }
+  },
+  "classes": {
+    "name": "Classes",
+    "short": "c{}",
+    "ascii": {
+      "1": "_",
+      "10": "c",
+      "100": "C",
+      "1000":"Γ",
+      "10000": "γ"
+    },
+    "unlockAt": {
+      "element": "classes",
+      "value": 1
+    },
+    "unlocked": false,
+    "cost": {
+      "element": "functions",
+      "value": 1000
+    },
+    "value": 0,
+    "button": {
+      "title": "Create Classes",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "functions",
+        "value": 1000
+      },
+      "unlocked": false
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "classes",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More Classes per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "Developer",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "classes",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Train a Developer!"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "classes",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "More Coffee!"
       }
     }
   }
