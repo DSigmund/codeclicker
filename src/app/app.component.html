@@ -13,7 +13,7 @@
       {{element.value.short}}/{{element.value.autoClicker.name}}: 
       {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus }}/s
     </td>
-    <td *ngIf="element.value.appliedBonus > 0" title="{{element.value.bonusReason}}">
+    <td *ngIf="element.value.appliedBonus > 1" title="{{element.value.bonusReason}}">
       Bonus: {{element.value.appliedBonus}}
     </td>
   </tr>
