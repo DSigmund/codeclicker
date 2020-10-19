@@ -34,7 +34,10 @@ export class AppComponent implements OnInit, OnDestroy {
   public singleClick(element: string): void {
     if (this.elements[this.elements[element].cost.element].value >= this.elements[element].cost.value) {
       this.elements[this.elements[element].cost.element].value -= this.elements[element].cost.value;
-      this.elements[element].value += Math.floor(this.elements[element].addValue.value * (this.elements[element].appliedBonus + 1));
+      this.elements[element].value += Math.floor(
+        this.elements[element].addValue.value *
+        this.elements[element].appliedBonus
+      );
       this.elements[element].button.clicked += 1;
       this.firstClick = true;
     }
@@ -121,7 +124,7 @@ export class AppComponent implements OnInit, OnDestroy {
           this.elements[e].value += Math.floor(
             this.elements[e].autoClicker.value *
             this.elements[e].autoClickerMulti.value *
-            (this.elements[e].appliedBonus + 1)
+            this.elements[e].appliedBonus
           );
         }
       }
@@ -209,7 +212,7 @@ export class AppComponent implements OnInit, OnDestroy {
   private calcBonus() {
     for (const e in this.elements) {
       if (this.elements.hasOwnProperty(e)) {
-        this.elements[e].appliedBonus = 0;
+        this.elements[e].appliedBonus = 1;
         this.elements[e].bonusReason = '';
         for (const innerE in this.elements) {
           if (this.elements.hasOwnProperty(innerE)) {
