@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v0.11.0 (2020-10-19)
+
+* Added better loc motivstion
+
 ## v0.10.4 (2020-10-18)
 
 * fix drawing, add id to buttons
