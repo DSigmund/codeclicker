@@ -7,11 +7,11 @@
     </td>
     <td *ngIf="element.value.addValue.value > 1" title="({{element.value.addValue.value}} with bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/click: 
-      {{element.value.addValue.value * element.value.appliedBonus }}
+      {{element.value.addValue.value * element.value.appliedBonus | number}}
     </td>
     <td *ngIf="element.value.autoClicker.value > 0" title="({{element.value.autoClicker.value}} {{element.value.autoClicker.name}} on Level {{element.value.autoClickerMulti.value}} with Bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/{{element.value.autoClicker.name}}: 
-      {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus }}/s
+      {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus | number}}/s
     </td>
     <td *ngIf="element.value.appliedBonus > 1" title="{{element.value.bonusReason}}">
       Bonus: {{element.value.appliedBonus}}
@@ -56,7 +56,7 @@
 <div id="codeBox" *ngIf="firstClick">{{ascii}}</div>
 <footer>
   <button (click)="reset()">reset</button>
-  <a href="https://paypal.me/DSigmund/2.50?locale.x=en_US" target="_blank" rel="noopener noreferrer">Gift a Coffee</a>
+  <a href="https://paypal.me/DSigmund/2.50?locale.x=en_US" target="_blank" rel="noopener noreferrer">Spend a Coffee</a>
   <a href="https://github.com/DSigmund/codeclicker" target="_blank" rel="noopener noreferrer">Source</a>
   <a href="https://www.webdad.eu/impressum.html" target="_blank" rel="noopener noreferrer">Legal</a>
   <a href="https://www.webdad.eu/datenschutz.html" target="_blank" rel="noopener noreferrer">Data Policy</a>
