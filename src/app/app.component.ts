@@ -6,6 +6,7 @@ import { version } from '../../package.json';
 import achievements from '../../achievements.json';
 import elements from '../../elements.json';
 import config from '../../config.json';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit, OnDestroy {
   public version: string = version;
 
   config = config;
+  title = config.title;
   source = interval(config.cycle);
   sourceSave = interval(config.saveEvery);
 
@@ -30,6 +32,10 @@ export class AppComponent implements OnInit, OnDestroy {
   firstClick = false;
 
   ascii = '';
+
+  public constructor(private titleService: Title ) {
+    this.titleService.setTitle( this.title );
+  }
 
   public singleClick(element: string): void {
     if (this.elements[this.elements[element].cost.element].value >= this.elements[element].cost.value) {
