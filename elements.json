@@ -101,6 +101,10 @@
       "value": 1000
     },
     "value": 0,
+    "bonus": {
+      "element":"linesOfCode",
+      "divider":20
+    },
     "button": {
       "title": "Create Functions",
       "clicked": 0,
@@ -183,6 +187,10 @@
       "value": 1000
     },
     "value": 0,
+    "bonus": {
+      "element":"linesOfCode",
+      "divider":25
+    },
     "button": {
       "title": "Create Classes",
       "clicked": 0,
@@ -265,6 +273,10 @@
       "value": 1000
     },
     "value": 0,
+    "bonus": {
+      "element":"linesOfCode",
+      "divider":30
+    },
     "button": {
       "title": "Create Applications",
       "clicked": 0,
@@ -347,6 +359,10 @@
       "value": 1000
     },
     "value": 0,
+    "bonus": {
+      "element":"linesOfCode",
+      "divider":50
+    },
     "button": {
       "title": "Create MicroServices",
       "clicked": 0,

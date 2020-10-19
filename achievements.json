@@ -18,6 +18,15 @@
     }
   },
   {
+    "name": "One Million LoC",
+    "description":"there we go, you're on your way!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "linesOfCode.value",
+      "value": 1000000
+    }
+  },
+  {
     "name": "Army of Bots",
     "description":"Wow. 10 Bots! I wonder how long this took you...",
     "unlocked": false,
