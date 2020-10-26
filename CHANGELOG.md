@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v0.12.0 (2020-10-26)
+
+* Better display value
+* fix
+
 ## v0.11.6 (2020-10-19)
 
 * nicer codebox
