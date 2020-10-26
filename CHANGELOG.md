@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v0.13.0 (2020-10-26)
+
+* Added Ascensions2 2
+
 ## v0.12.0 (2020-10-26)
 
 * Better display value
