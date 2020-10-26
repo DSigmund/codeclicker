@@ -3,18 +3,18 @@
   <tr *ngFor="let element of elements | keyvalue">
     <td *ngIf="element.value.value > 0 || element.value.unlocked" id="{{element.key}}">
       {{element.value.name}}: 
-      {{element.value.value}}
+      {{element.value.value | humanreadablenumber}}
     </td>
     <td *ngIf="element.value.addValue.value > 1" title="({{element.value.addValue.value}} with bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/click: 
-      {{element.value.addValue.value * element.value.appliedBonus | number}}
+      {{element.value.addValue.value * element.value.appliedBonus | number | humanreadablenumber}}
     </td>
     <td *ngIf="element.value.autoClicker.value > 0" title="({{element.value.autoClicker.value}} {{element.value.autoClicker.name}} on Level {{element.value.autoClickerMulti.value}} with Bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/{{element.value.autoClicker.name}}: 
-      {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus | number}}/s
+      {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus | number | humanreadablenumber}}/s
     </td>
     <td *ngIf="element.value.appliedBonus > 1" title="{{element.value.bonusReason}}">
-      Bonus: {{element.value.appliedBonus}}
+      Bonus: {{element.value.appliedBonus | humanreadablenumber}}
     </td>
   </tr>
 </table>
