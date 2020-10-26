@@ -3,18 +3,18 @@
   <tr *ngFor="let element of elements | keyvalue">
     <td *ngIf="element.value.value > 0 || element.value.unlocked" id="{{element.key}}">
       {{element.value.name}}: 
-      {{element.value.value | humanreadablenumber | number}}
+      {{element.value.value | humanreadablenumber}}
     </td>
     <td *ngIf="element.value.addValue.value > 1" title="({{element.value.addValue.value}} with bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/click: 
-      {{element.value.addValue.value * element.value.appliedBonus | humanreadablenumber | number}}
+      {{element.value.addValue.value * element.value.appliedBonus | humanreadablenumber}}
     </td>
     <td *ngIf="element.value.autoClicker.value > 0" title="({{element.value.autoClicker.value}} {{element.value.autoClicker.name}} on Level {{element.value.autoClickerMulti.value}} with Bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/{{element.value.autoClicker.name}}: 
-      {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus | humanreadablenumber | number}}/s
+      {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus | humanreadablenumber}}/s
     </td>
     <td *ngIf="element.value.appliedBonus > 1" title="{{element.value.bonusReason}}">
-      Bonus: {{element.value.appliedBonus | humanreadablenumber | number}}
+      Bonus: {{element.value.appliedBonus | humanreadablenumber}}
     </td>
   </tr>
 </table>
@@ -30,17 +30,17 @@
     </td>
     <td *ngIf="element.value.addValue.unlocked">
       <button (click)="buy(element.key, 'addValue')">
-        {{element.value.addValue.button.title}} ({{element.value.addValue.cost.next}} {{element.value.short}})
+        {{element.value.addValue.button.title}} ({{element.value.addValue.cost.next | humanreadablenumber}} {{element.value.short}})
       </button>
     </td>
     <td *ngIf="element.value.autoClicker.unlocked">
       <button (click)="buy(element.key, 'autoClicker')">
-        {{element.value.autoClicker.button.title}} ({{element.value.autoClicker.cost.next}} {{element.value.short}})
+        {{element.value.autoClicker.button.title}} ({{element.value.autoClicker.cost.next | humanreadablenumber}} {{element.value.short}})
       </button>
     </td>
     <td *ngIf="element.value.autoClickerMulti.unlocked">
       <button (click)="buy(element.key, 'autoClickerMulti')">
-        {{element.value.autoClickerMulti.button.title}} ({{element.value.autoClickerMulti.cost.next}} {{element.value.short}})
+        {{element.value.autoClickerMulti.button.title}} ({{element.value.autoClickerMulti.cost.next | humanreadablenumber}} {{element.value.short}})
       </button>
     </td>
   </tr>
@@ -53,7 +53,16 @@
     {{a.name}}
   </div>
 </div>
-<div id="codeBox" *ngIf="firstClick">{{ascii}}</div>
+<div id="codeBox" *ngIf="firstClick || autoClick">{{ascii}}</div>
+
+<div id="ascencions" *ngIf="ascensions.value > 0 || elements.linesOfCode.value >= ascensions.cost.next">
+  <strong>Ascensions</strong><br/>
+  Level: {{ascensions.value}}<br/>
+  Bonus: {{ascensions.bonus}}<br/>
+  <button (click)="ascend()">Ascend ({{ascensions.cost.next | humanreadablenumber}})</button><br/>
+  Be Sure: this will remove everything, but you get a Bonus for the next round!
+</div>
+
 <footer>
   <button (click)="reset()">reset</button>
   <a href="https://paypal.me/DSigmund/2.50?locale.x=en_US" target="_blank" rel="noopener noreferrer">Spend a Coffee</a>

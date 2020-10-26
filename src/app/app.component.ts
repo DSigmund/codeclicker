@@ -3,10 +3,12 @@ import { interval, Subscription } from 'rxjs';
 
 import { version } from '../../package.json';
 
+import ascensions from '../../ascensions.json';
 import achievements from '../../achievements.json';
 import elements from '../../elements.json';
 import config from '../../config.json';
 import { Title } from '@angular/platform-browser';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -29,7 +31,10 @@ export class AppComponent implements OnInit, OnDestroy {
   achievementsUnlocked = false;
   achievements = achievements;
 
+  ascensions = ascensions;
+
   firstClick = false;
+  autoClick = false;
 
   ascii = '';
 
@@ -42,7 +47,8 @@ export class AppComponent implements OnInit, OnDestroy {
       this.elements[this.elements[element].cost.element].value -= this.elements[element].cost.value;
       this.elements[element].value += Math.floor(
         this.elements[element].addValue.value *
-        this.elements[element].appliedBonus
+        this.elements[element].appliedBonus *
+        this.ascensions.bonus
       );
       this.elements[element].button.clicked += 1;
       this.firstClick = true;
@@ -78,6 +84,26 @@ export class AppComponent implements OnInit, OnDestroy {
   public reset(): void {
     localStorage.clear();
     window.location.reload();
+  }
+
+  public ascend(): void {
+    if (this.elements.linesOfCode.value >= this.ascensions.cost.next) {
+      localStorage.clear();
+      this.ascensions.value++;
+      this.ascensions.bonus = this.ascensions.calcBonus.next;
+      this.ascensions.cost.next = this.calcCostForLevel(
+        this.ascensions.value,
+        this.ascensions.cost.initial,
+        this.ascensions.cost.growth
+      );
+      this.ascensions.calcBonus.next = this.calcCostForLevel(
+        this.ascensions.value,
+        this.ascensions.calcBonus.initial,
+        this.ascensions.calcBonus.growth
+      );
+      localStorage.setItem('ascensions', JSON.stringify(ascensions));
+      window.location.reload();
+    }
   }
 
   ngOnInit() {
@@ -130,8 +156,10 @@ export class AppComponent implements OnInit, OnDestroy {
           this.elements[e].value += Math.floor(
             this.elements[e].autoClicker.value *
             this.elements[e].autoClickerMulti.value *
-            this.elements[e].appliedBonus
+            this.elements[e].appliedBonus *
+            this.ascensions.bonus
           );
+          this.autoClick = true;
         }
       }
     }
@@ -198,6 +226,9 @@ export class AppComponent implements OnInit, OnDestroy {
         this.achievements.find(x => x.name === uA).unlocked = true;
         this.achievementsUnlocked = true;
       }
+    }
+    if (localStorage.getItem('ascensions')) {
+      this.ascensions = JSON.parse(localStorage.getItem('ascensions'));
     }
   }
   private unlockAchievements() {

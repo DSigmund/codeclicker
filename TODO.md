@@ -18,3 +18,5 @@
 - ascension: reset all, get ascension bonud
 
 - more motivation!
+
+- mpbile ready
