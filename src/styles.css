@@ -80,7 +80,7 @@ footer a {
   overflow-wrap: anywhere;
 }
 
-#linesOfCode {
+.primary {
   font-weight: 600;
 }
 

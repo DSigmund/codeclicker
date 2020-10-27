@@ -8,7 +8,6 @@ import achievements from '../../achievements.json';
 import elements from '../../elements.json';
 import config from '../../config.json';
 import { Title } from '@angular/platform-browser';
-import { element } from 'protractor';
 
 @Component({
   selector: 'app-root',
@@ -37,6 +36,8 @@ export class AppComponent implements OnInit, OnDestroy {
   autoClick = false;
 
   ascii = '';
+
+  primary;
 
   public constructor(private titleService: Title ) {
     this.titleService.setTitle( this.title );
@@ -87,7 +88,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public ascend(): void {
-    if (this.elements.linesOfCode.value >= this.ascensions.cost.next) {
+    if (this.elements[this.primary].value >= this.ascensions.cost.next) {
       localStorage.clear();
       this.ascensions.value++;
       this.ascensions.bonus = this.ascensions.calcBonus.next;
@@ -107,6 +108,14 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    for (const e in this.elements) {
+      if (this.elements.hasOwnProperty(e)) {
+        if (this.elements[e].primary) {
+          this.primary = e;
+          break;
+        }
+      }
+    }
     this.load();
     this.subscription = this.source.subscribe(val => { // cycle every second
       this.unlocker();
@@ -262,4 +271,5 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     }
   }
+
 }

@@ -1,6 +1,8 @@
 {
   "linesOfCode": {
     "name": "Lines of Code",
+    "primary": true,
+    "order": 0,
     "short": "LoC",
     "ascii": {
       "1": ".",
@@ -84,6 +86,8 @@
   "functions": {
     "name": "Functions",
     "short": "f()",
+    "primary": false,
+    "order": 1,
     "ascii": {
       "1": ":",
       "10": "f",
@@ -170,6 +174,8 @@
   "classes": {
     "name": "Classes",
     "short": "c{}",
+    "primary": false,
+    "order": 2,
     "ascii": {
       "1": "_",
       "10": "c",
@@ -256,6 +262,8 @@
   "applications": {
     "name": "Applications",
     "short": "a**",
+    "primary": false,
+    "order": 3,
     "ascii": {
       "1": "*",
       "10": "a",
@@ -342,6 +350,8 @@
   "microservices": {
     "name": "MicroServices",
     "short": "m#",
+    "primary": false,
+    "order": 4,
     "ascii": {
       "1": "#",
       "10": "m",

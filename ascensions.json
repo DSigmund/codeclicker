@@ -1,4 +1,7 @@
 {
+  "title":"Ascensions",
+  "button":"ascend",
+  "help":"Be Sure: this will remove everything, but you get a Bonus for the next round!",
   "value": 0,
   "bonus": 1,
   "cost": {

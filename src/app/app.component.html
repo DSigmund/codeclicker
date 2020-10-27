@@ -1,7 +1,7 @@
 <h1>{{title}} v{{version}}</h1>
 <table id="values">
   <tr *ngFor="let element of elements | keyvalue">
-    <td *ngIf="element.value.value > 0 || element.value.unlocked" id="{{element.key}}">
+    <td *ngIf="element.value.value > 0 || element.value.unlocked" id="{{element.key}}" [ngClass]="{'primary': element.value.primary}">
       {{element.value.name}}: 
       {{element.value.value | humanreadablenumber}}
     </td>
@@ -56,11 +56,11 @@
 <div id="codeBox" *ngIf="firstClick || autoClick">{{ascii}}</div>
 
 <div id="ascencions" *ngIf="ascensions.value > 0 || elements.linesOfCode.value >= ascensions.cost.next">
-  <strong>Ascensions</strong><br/>
+  <strong>{{ascensions.title}}</strong><br/>
   Level: {{ascensions.value}}<br/>
   Bonus: {{ascensions.bonus}}<br/>
-  <button (click)="ascend()">Ascend ({{ascensions.cost.next | humanreadablenumber}})</button><br/>
-  Be Sure: this will remove everything, but you get a Bonus for the next round!
+  <button (click)="ascend()">{{ascensions.button}} ({{ascensions.cost.next | humanreadablenumber}})</button><br/>
+  {{ascensions.help}}
 </div>
 
 <footer>

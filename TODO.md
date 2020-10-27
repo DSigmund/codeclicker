@@ -4,19 +4,24 @@
 
 - loc achievements (1b, 1t, 1p)
 
-- allow keyboard input
-- add focus:visible
-- make aria-complete!
-
 - layer 5: it-services +iIιξ
 - layer 6: end2end-app @eEηε
 - layer 7: saas $sSΣσ
 
+--> 1.0
+
 - build Ascii-House with LoC
 - (better: pixel graphics)
 
-- ascension: reset all, get ascension bonud
-
-- more motivation!
+--> 1.1
 
 - mpbile ready
+
+
+---> 1.2
+
+- allow keyboard input
+- add focus:visible
+- make aria-complete!
+
+---> 1.3
