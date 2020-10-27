@@ -8,6 +8,7 @@ import achievements from '../../achievements.json';
 import elements from '../../elements.json';
 import config from '../../config.json';
 import { Title } from '@angular/platform-browser';
+import { KeyValue } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -270,6 +271,11 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     }
+  }
+
+
+  valueAscOrder = (a: KeyValue<string, any>, b: KeyValue<string, any>): number => {
+    return a.value.order > b.value.order ? 1 : -1;
   }
 
 }

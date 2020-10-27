@@ -27,6 +27,24 @@
     }
   },
   {
+    "name": "A Billion Ways",
+    "description":"thats a huge pile of code!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "linesOfCode.value",
+      "value": 1000000000
+    }
+  },
+  {
+    "name": "> INTEGER_MAX_SAFE!",
+    "description":"wow!",
+    "unlocked": false,
+    "unlockAt": {
+      "what": "linesOfCode.value",
+      "value": 1000000000000
+    }
+  },
+  {
     "name": "Army of Bots",
     "description":"Wow. 10 Bots! I wonder how long this took you...",
     "unlocked": false,

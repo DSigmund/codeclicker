@@ -1,17 +1,25 @@
 <h1>{{title}} v{{version}}</h1>
 <table id="values">
-  <tr *ngFor="let element of elements | keyvalue">
+  <tr *ngFor="let element of elements | keyvalue: valueAscOrder">
     <td *ngIf="element.value.value > 0 || element.value.unlocked" id="{{element.key}}" [ngClass]="{'primary': element.value.primary}">
       {{element.value.name}}: 
       {{element.value.value | humanreadablenumber}}
     </td>
-    <td *ngIf="element.value.addValue.value > 1" title="({{element.value.addValue.value}} with bonus {{element.value.appliedBonus}})">
+    <td *ngIf="element.value.addValue.value > 1 && ascensions.value == 0" title="({{element.value.addValue.value}} with bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/click: 
       {{element.value.addValue.value * element.value.appliedBonus | humanreadablenumber}}
     </td>
-    <td *ngIf="element.value.autoClicker.value > 0" title="({{element.value.autoClicker.value}} {{element.value.autoClicker.name}} on Level {{element.value.autoClickerMulti.value}} with Bonus {{element.value.appliedBonus}})">
+    <td *ngIf="element.value.addValue.value > 1 && ascensions.value > 0" title="({{element.value.addValue.value}} with bonus {{element.value.appliedBonus}} and {{ascensions.bonus}})">
+      {{element.value.short}}/click: 
+      {{element.value.addValue.value * element.value.appliedBonus * ascensions.bonus | humanreadablenumber}}
+    </td>
+    <td *ngIf="element.value.autoClicker.value > 0 && ascensions.value == 0" title="({{element.value.autoClicker.value}} {{element.value.autoClicker.name}} on Level {{element.value.autoClickerMulti.value}} with Bonus {{element.value.appliedBonus}})">
       {{element.value.short}}/{{element.value.autoClicker.name}}: 
       {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus | humanreadablenumber}}/s
+    </td>
+    <td *ngIf="element.value.autoClicker.value > 0 && ascensions.value > 0" title="({{element.value.autoClicker.value}} {{element.value.autoClicker.name}} on Level {{element.value.autoClickerMulti.value}} with Bonus {{element.value.appliedBonus}} and {{ascensions.bonus}})">
+      {{element.value.short}}/{{element.value.autoClicker.name}}: 
+      {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus * ascensions.bonus | humanreadablenumber}}/s
     </td>
     <td *ngIf="element.value.appliedBonus > 1" title="{{element.value.bonusReason}}">
       Bonus: {{element.value.appliedBonus | humanreadablenumber}}
@@ -19,7 +27,7 @@
   </tr>
 </table>
 <table>
-  <tr *ngFor="let element of elements | keyvalue">
+  <tr *ngFor="let element of elements | keyvalue: valueAscOrder">
     <td *ngIf="element.value.button.unlocked">
       <button (click)="singleClick(element.key)" id="{{element.key}}Click">
         {{element.value.button.title}}

@@ -434,5 +434,269 @@
         "title": "Excel-Sheets"
       }
     }
+  },
+  "itservices": {
+    "name": "IT-Services",
+    "short": "IT",
+    "primary": false,
+    "order": 5,
+    "ascii": {
+      "1": "+",
+      "10": "i",
+      "100": "I",
+      "1000":"ι",
+      "10000": "ξ"
+    },
+    "unlockAt": {
+      "element": "itservices",
+      "value": 1
+    },
+    "unlocked": false,
+    "cost": {
+      "element": "microservices",
+      "value": 1000
+    },
+    "value": 0,
+    "bonus": {
+      "element":"linesOfCode",
+      "divider":60
+    },
+    "button": {
+      "title": "Create IT-Services",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "microservices",
+        "value": 1000
+      },
+      "unlocked": false
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "itservices",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More IT-Services per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "Catalog Manager",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "itservices",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Train a Catalog Manager!"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "itservices",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "Lists over Lists"
+      }
+    }
+  },
+  "end2end": {
+    "name": "End 2 End Apps",
+    "short": "e2e",
+    "primary": false,
+    "order": 6,
+    "ascii": {
+      "1": "@",
+      "10": "e",
+      "100": "E",
+      "1000":"η",
+      "10000": "ε"
+    },
+    "unlockAt": {
+      "element": "end2end",
+      "value": 1
+    },
+    "unlocked": false,
+    "cost": {
+      "element": "itservices",
+      "value": 1000
+    },
+    "value": 0,
+    "bonus": {
+      "element":"linesOfCode",
+      "divider":70
+    },
+    "button": {
+      "title": "Create End2End-Apps",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "itservices",
+        "value": 1000
+      },
+      "unlocked": false
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "end2end",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More End2End-Services per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "SalesPerson",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "end2end",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Find a Sales-Person"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "end2end",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "Give em Flyers"
+      }
+    }
+  },
+  "saas": {
+    "name": "SaaS-Sells",
+    "short": "saas",
+    "primary": false,
+    "order": 7,
+    "ascii": {
+      "1": "$",
+      "10": "s",
+      "100": "S",
+      "1000":"Σ",
+      "10000": "σ"
+    },
+    "unlockAt": {
+      "element": "saas",
+      "value": 1
+    },
+    "unlocked": false,
+    "cost": {
+      "element": "end2end",
+      "value": 1000
+    },
+    "value": 0,
+    "bonus": {
+      "element":"linesOfCode",
+      "divider":80
+    },
+    "button": {
+      "title": "Create SaaS-Sales",
+      "clicked": 0,
+      "unlockAt": {
+        "element": "end2end",
+        "value": 1000
+      },
+      "unlocked": false
+    },
+    "addValue": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "saas",
+        "value": 10
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 10,
+        "growth": 100,
+        "next": 10
+      },
+      "button": {
+        "title": "More SaaS-Sales per Click!"
+      }
+    },
+    "autoClicker": {
+      "name": "BigBoss",
+      "value": 0,
+      "level": 0,
+      "unlockAt": {
+        "element": "saas",
+        "value": 100
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 100,
+        "growth": 100,
+        "next": 100
+      },
+      "button": {
+        "title": "Promote a Big Boss"
+      }
+    },
+    "autoClickerMulti": {
+      "value": 1,
+      "level": 0,
+      "unlockAt": {
+        "element": "saas",
+        "value": 200
+      },
+      "unlocked": false,
+      "cost": {
+        "initial": 200,
+        "growth": 120,
+        "next": 200
+      },
+      "button": {
+        "title": "More Money"
+      }
+    }
   }
 }
