@@ -2,9 +2,6 @@
 
 
 
-- BUG: resets on second ascension!
-
-
 One idea for display of code which shouldn't be too complicated or completely change your game would be to have the actual code of the game be revealed one character at a time instead of the xs and Os. You could even keep it to the same little window, and have it scroll off the top as your added new code to the bottom.
 hte ascii art box is nice, it stops adding new symbols at around the millions. It overflowed around 20m loc too. You could even put it as a background but with way larger font and a dark gray color.
 
