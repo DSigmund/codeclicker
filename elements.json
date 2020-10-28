@@ -57,9 +57,9 @@
       },
       "unlocked": false,
       "cost": {
-        "initial": 100,
-        "growth": 100,
-        "next": 100
+        "initial": 80,
+        "growth": 80,
+        "next": 80
       },
       "button": {
         "title": "Buy a Bot!"
@@ -74,9 +74,9 @@
       },
       "unlocked": false,
       "cost": {
-        "initial": 200,
-        "growth": 120,
-        "next": 200
+        "initial": 180,
+        "growth": 100,
+        "next": 180
       },
       "button": {
         "title": "Enhance the Bots!"
@@ -145,9 +145,9 @@
       },
       "unlocked": false,
       "cost": {
-        "initial": 100,
-        "growth": 100,
-        "next": 100
+        "initial": 80,
+        "growth": 80,
+        "next": 80
       },
       "button": {
         "title": "Train a Coder!"
@@ -162,9 +162,9 @@
       },
       "unlocked": false,
       "cost": {
-        "initial": 200,
-        "growth": 120,
-        "next": 200
+        "initial": 180,
+        "growth": 110,
+        "next": 180
       },
       "button": {
         "title": "Better Training!"
