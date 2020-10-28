@@ -53,13 +53,13 @@
       "level": 0,
       "unlockAt": {
         "element": "linesOfCode",
-        "value": 100
+        "value": 50
       },
       "unlocked": false,
       "cost": {
-        "initial": 80,
+        "initial": 50,
         "growth": 80,
-        "next": 80
+        "next": 50
       },
       "button": {
         "title": "Buy a Bot!"

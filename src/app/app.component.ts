@@ -103,7 +103,7 @@ export class AppComponent implements OnInit, OnDestroy {
         this.ascensions.calcBonus.initial,
         this.ascensions.calcBonus.growth
       );
-      localStorage.setItem('ascensions', JSON.stringify(ascensions));
+      localStorage.setItem('ascensions', JSON.stringify(this.ascensions));
       window.location.reload();
     }
   }
