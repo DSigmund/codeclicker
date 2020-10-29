@@ -6,12 +6,12 @@
   "bonus": 1,
   "cost": {
     "initial": 100000,
-    "growth": 100,
+    "growth": 200,
     "next": 100000
   },
   "calcBonus": {
     "initial": 2,
-    "growth": 200,
+    "growth": 100,
     "next": 2
   }
 }

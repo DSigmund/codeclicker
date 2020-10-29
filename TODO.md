@@ -1,6 +1,5 @@
 # TODO
 
-> I'm running on the 'ascensions fixed' -build. ascentions happen -awfully- fast now. I wonder if your bonus is going up too fast.
 
 > I also think you desperately need a 'buy all' on the buttons now, rather than click to buy only one. it would save lots of clicking
 
