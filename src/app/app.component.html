@@ -21,39 +21,28 @@
       {{element.value.short}}/{{element.value.autoClicker.name}}: 
       {{element.value.autoClicker.value * element.value.autoClickerMulti.value * element.value.appliedBonus * ascensions.bonus | humanreadablenumber}}/s
     </td>
-    <td *ngIf="element.value.appliedBonus > 1" title="{{element.value.bonusReason}}">
+    <td *ngIf="element.value.appliedBonus > 1" title="{{element.value.bonusReason}}" [ngClass]="{'primary': element.value.primary}">
       Bonus: {{element.value.appliedBonus | humanreadablenumber}}
     </td>
   </tr>
 </table>
-<table>
-  <tr *ngFor="let element of elements | keyvalue: valueAscOrder">
-    <td *ngIf="element.value.button.unlocked">
-      <button (click)="singleClick(element.key)" id="{{element.key}}Click" [disabled]="loading">
-        {{element.value.button.title}}
-        <span *ngIf="element.value.cost.value > 0">
-          {{displaySingleClickCost(element.key)}}
-        </span>
-      </button>
-    </td>
-    <td *ngIf="element.value.addValue.unlocked">
-      <button (click)="buy(element.key, 'addValue')" [disabled]="loading">
-        {{element.value.addValue.button.title}} ({{element.value.addValue.cost.next | humanreadablenumber}} {{element.value.short}})
-      </button>
-    </td>
-    <td *ngIf="element.value.autoClicker.unlocked">
-      <button (click)="buy(element.key, 'autoClicker')" [disabled]="loading">
-        {{element.value.autoClicker.button.title}} ({{element.value.autoClicker.cost.next | humanreadablenumber}} {{element.value.short}})
-      </button>
-    </td>
-    <td *ngIf="element.value.autoClickerMulti.unlocked">
-      <button (click)="buy(element.key, 'autoClickerMulti')" [disabled]="loading">
-        {{element.value.autoClickerMulti.button.title}} ({{element.value.autoClickerMulti.cost.next | humanreadablenumber}} {{element.value.short}})
-      </button>
-    </td>
-  </tr>
-</table>
-
+<div *ngFor="let element of elements | keyvalue: valueAscOrder" class="btn-group">
+  <button (click)="singleClick(element.key)" id="{{element.key}}Click" [disabled]="loading" *ngIf="element.value.button.unlocked">
+    {{element.value.button.title}}
+    <span *ngIf="element.value.cost.value > 0">
+      {{displaySingleClickCost(element.key)}}
+    </span>
+  </button>
+  <button (click)="buy(element.key, 'addValue')" [disabled]="loading" *ngIf="element.value.addValue.unlocked">
+    {{element.value.addValue.button.title}} ({{element.value.addValue.cost.next | humanreadablenumber}} {{element.value.short}})
+  </button>
+  <button (click)="buy(element.key, 'autoClicker')" [disabled]="loading" *ngIf="element.value.autoClicker.unlocked">
+    {{element.value.autoClicker.button.title}} ({{element.value.autoClicker.cost.next | humanreadablenumber}} {{element.value.short}})
+  </button>
+  <button (click)="buy(element.key, 'autoClickerMulti')" [disabled]="loading" *ngIf="element.value.autoClickerMulti.unlocked">
+    {{element.value.autoClickerMulti.button.title}} ({{element.value.autoClickerMulti.cost.next | humanreadablenumber}} {{element.value.short}})
+  </button>
+</div>
 <br/>
 <h2 *ngIf="achievementsUnlocked">Achievements</h2>
 <div *ngFor="let a of achievements">

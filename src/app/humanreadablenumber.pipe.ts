@@ -6,7 +6,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class HumanreadablenumberPipe implements PipeTransform {
 
   transform(value: any, ...args: any[]): any {
-    if (value > (1000 * 1000 * 1000)) {
+    if (value > (1000 * 1000 * 1000 * 1000 * 1000)) {
+      return (value / (1000 * 1000 * 1000 * 1000 * 1000)).toFixed(2) + 'p';
+    } else if (value > (1000 * 1000 * 1000 * 1000)) {
+      return (value / (1000 * 1000 * 1000 * 1000)).toFixed(2) + 't';
+    } else if (value > (1000 * 1000 * 1000)) {
       return (value / (1000 * 1000 * 1000)).toFixed(2) + 'g';
     } else if (value > (1000 * 1000)) {
       return (value / (1000 * 1000)).toFixed(2) + 'm';
