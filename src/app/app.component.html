@@ -29,7 +29,7 @@
 <table>
   <tr *ngFor="let element of elements | keyvalue: valueAscOrder">
     <td *ngIf="element.value.button.unlocked">
-      <button (click)="singleClick(element.key)" id="{{element.key}}Click" [disabled]="!loading">
+      <button (click)="singleClick(element.key)" id="{{element.key}}Click" [disabled]="loading">
         {{element.value.button.title}}
         <span *ngIf="element.value.cost.value > 0">
           {{displaySingleClickCost(element.key)}}
@@ -37,17 +37,17 @@
       </button>
     </td>
     <td *ngIf="element.value.addValue.unlocked">
-      <button (click)="buy(element.key, 'addValue')" [disabled]="!loading">
+      <button (click)="buy(element.key, 'addValue')" [disabled]="loading">
         {{element.value.addValue.button.title}} ({{element.value.addValue.cost.next | humanreadablenumber}} {{element.value.short}})
       </button>
     </td>
     <td *ngIf="element.value.autoClicker.unlocked">
-      <button (click)="buy(element.key, 'autoClicker')" [disabled]="!loading">
+      <button (click)="buy(element.key, 'autoClicker')" [disabled]="loading">
         {{element.value.autoClicker.button.title}} ({{element.value.autoClicker.cost.next | humanreadablenumber}} {{element.value.short}})
       </button>
     </td>
     <td *ngIf="element.value.autoClickerMulti.unlocked">
-      <button (click)="buy(element.key, 'autoClickerMulti')" [disabled]="!loading">
+      <button (click)="buy(element.key, 'autoClickerMulti')" [disabled]="loading">
         {{element.value.autoClickerMulti.button.title}} ({{element.value.autoClickerMulti.cost.next | humanreadablenumber}} {{element.value.short}})
       </button>
     </td>
@@ -73,8 +73,26 @@
 
 <footer>
   <button (click)="reset()">reset</button>
+  <button (click)="export();modalExport = true">Export Data</button>
+  <button (click)="modalImport = true">Import Data</button>
   <a href="https://paypal.me/DSigmund/2.50?locale.x=en_US" target="_blank" rel="noopener noreferrer">Spend a Coffee</a>
   <a href="https://github.com/DSigmund/codeclicker" target="_blank" rel="noopener noreferrer">Source</a>
   <a href="https://www.webdad.eu/impressum.html" target="_blank" rel="noopener noreferrer">Legal</a>
   <a href="https://www.webdad.eu/datenschutz.html" target="_blank" rel="noopener noreferrer">Data Policy</a>
 </footer>
+<div id="overlay" *ngIf="modalExport || modalImport"></div>
+<div class="modal" id="export" *ngIf="modalExport">
+  <h3>Export</h3>
+  <div>Copy and Save this.</div>
+  <div class="body">{{encodedString}}</div>
+  <button (click)="modalExport = false">Close</button>
+</div>
+<div class="modal" id="import" *ngIf="modalImport">
+  <h3>Import</h3>
+  <div>Enter your exported String here:</div>
+  <div class="body">
+    <textarea id="importTextArea"></textarea>
+  </div>
+  <button (click)="modalImport = false">Cancel</button>
+  <button (click)="doImport()">Import</button>
+</div>

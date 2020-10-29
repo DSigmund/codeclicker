@@ -1,7 +1,5 @@
 # TODO
 
-> Thank you, i will have to block the buttons until the load-process is complete.
-
 > I'm running on the 'ascensions fixed' -build. ascentions happen -awfully- fast now. I wonder if your bonus is going up too fast.
 
 > I also think you desperately need a 'buy all' on the buttons now, rather than click to buy only one. it would save lots of clicking
@@ -14,10 +12,6 @@
 
 Hm ... i will think of something. right now its sorted horizontally. maybe ill make button groups. or better borders ...
 
-> No achievement description :( So I don't know why I got Advanced AI 101 and some other stuff. 
-
-Its in the title. so hover ...
-But your right, i will make a clickable popup of sorts and a message on achiieving it
 
 
 > Also achievements overlapped with the ascii art box on the right.
@@ -27,7 +21,6 @@ But your right, i will make a clickable popup of sorts and a message on achiievi
 
 Well, Classes are built with functions and give a bonus to loc-creation. but it IS very unclear right now. i will think about this.
 
-- export/import function,
 
 --> 1.1
 

@@ -42,6 +42,12 @@ export class AppComponent implements OnInit, OnDestroy {
 
   loading = true;
 
+  modalExport = false;
+  modalImport = false;
+
+  encodedString = '';
+
+
   public constructor(private titleService: Title ) {
     this.titleService.setTitle( this.title );
   }
@@ -204,6 +210,27 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     }
   }
+
+  private export() {
+    let encodedData = '';
+    encodedData += btoa(unescape(encodeURIComponent(JSON.stringify(this.elements)))) + '#';
+    encodedData += btoa(unescape(encodeURIComponent(localStorage.getItem('unlockedAchievements')))) + '#';
+    encodedData += btoa(unescape(encodeURIComponent(JSON.stringify(this.ascensions))));
+    this.encodedString =  encodedData;
+  }
+
+  public doImport() {
+    this.import(document.getElementById('importTextArea').value);
+  }
+
+  private import(encodedData: string) {
+    const split = encodedData.split('#');
+    localStorage.setItem('elements', atob(decodeURIComponent(escape(split[0]))));
+    localStorage.setItem('unlockedAchievements', atob(decodeURIComponent(escape(split[1]))));
+    localStorage.setItem('ascensions', atob(decodeURIComponent(escape(split[2]))));
+    window.location.reload();
+  }
+
   private save() {
     localStorage.setItem('elements', JSON.stringify(this.elements));
   }
