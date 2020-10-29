@@ -64,6 +64,7 @@ footer a {
   margin: 5px;
   float: left;
   cursor: default;
+  width: 60%;
 }
 
 #codeBox {

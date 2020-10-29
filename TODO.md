@@ -13,10 +13,6 @@
 Hm ... i will think of something. right now its sorted horizontally. maybe ill make button groups. or better borders ...
 
 
-
-> Also achievements overlapped with the ascii art box on the right.
-
-
 > I'm not sure yet what classes are supposed to do. But my function income seems to be mostly limited by how fast I can click the "Create Functions" button. There's a few million loc that I don't use. If I could use that to further upgrade function income or had some way to convert loc to functions faster without spending all my funcs that would be nice. If you couldn't buy classes until after first ascension (and maybe unlock more stuff after) that would make the ascension feel more meaningful.  
 
 Well, Classes are built with functions and give a bonus to loc-creation. but it IS very unclear right now. i will think about this.
