@@ -120,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "codeclicker"
+    }
+  },
+  "defaultProject": "codeclicker",
+  "cli": {
+    "analytics": "f2f7ac2d-8f07-4976-a740-8cf26db256bf"
+  }
 }

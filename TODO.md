@@ -1,9 +1,14 @@
 # TODO
 
+> Thank you, i will have to block the buttons until the load-process is complete.
 
+> I'm running on the 'ascensions fixed' -build. ascentions happen -awfully- fast now. I wonder if your bonus is going up too fast.
 
-One idea for display of code which shouldn't be too complicated or completely change your game would be to have the actual code of the game be revealed one character at a time instead of the xs and Os. You could even keep it to the same little window, and have it scroll off the top as your added new code to the bottom.
-hte ascii art box is nice, it stops adding new symbols at around the millions. It overflowed around 20m loc too. You could even put it as a background but with way larger font and a dark gray color.
+> I also think you desperately need a 'buy all' on the buttons now, rather than click to buy only one. it would save lots of clicking
+
+> One idea for display of code which shouldn't be too complicated or completely change your game would be to have the actual code of the game be revealed one character at a time instead of the xs and Os. You could even keep it to the same little window, and have it scroll off the top as your added new code to the bottom.
+
+> the ascii art box is nice, it stops adding new symbols at around the millions. It overflowed around 20m loc too. You could even put it as a background but with way larger font and a dark gray color.
 
 >The functions to code bonus is nice. Maybe group the bonus and function buy button together visually so it makes more sense. Or add a "Current lines of code bonus" description to the button for clarity.
 

@@ -40,6 +40,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
   primary;
 
+  loading = true;
+
   public constructor(private titleService: Title ) {
     this.titleService.setTitle( this.title );
   }
@@ -90,7 +92,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public ascend(): void {
     if (this.elements[this.primary].value >= this.ascensions.cost.next) {
-      localStorage.clear();
+      localStorage.removeItem('elements');
       this.ascensions.value++;
       this.ascensions.bonus = this.ascensions.calcBonus.next;
       this.ascensions.cost.next = this.calcCostForLevel(
@@ -206,30 +208,15 @@ export class AppComponent implements OnInit, OnDestroy {
     localStorage.setItem('elements', JSON.stringify(this.elements));
   }
   private load() {
+    this.loading = true;
     if (localStorage.getItem('elements')) {
       const loadedElements = JSON.parse(localStorage.getItem('elements'));
       for (const e in this.elements) {
         if (this.elements.hasOwnProperty(e)) {
-          this.elements[e].value = loadedElements[e].value;
-          this.elements[e].unlocked = loadedElements[e].unlocked;
-          this.elements[e].button.clicked = loadedElements[e].button.clicked;
-          this.elements[e].button.unlocked = loadedElements[e].button.unlocked;
-          this.elements[e].addValue.level = loadedElements[e].addValue.level;
-          this.elements[e].addValue.value = loadedElements[e].addValue.value;
-          this.elements[e].addValue.unlocked = loadedElements[e].addValue.unlocked;
-          this.elements[e].addValue.cost.next = loadedElements[e].addValue.cost.next;
-          this.elements[e].autoClicker.level = loadedElements[e].autoClicker.level;
-          this.elements[e].autoClicker.value = loadedElements[e].autoClicker.value;
-          this.elements[e].autoClicker.unlocked = loadedElements[e].autoClicker.unlocked;
-          this.elements[e].autoClicker.cost.next = loadedElements[e].autoClicker.cost.next;
-          this.elements[e].autoClickerMulti.level = loadedElements[e].autoClickerMulti.level;
-          this.elements[e].autoClickerMulti.value = loadedElements[e].autoClickerMulti.value;
-          this.elements[e].autoClickerMulti.unlocked = loadedElements[e].autoClickerMulti.unlocked;
-          this.elements[e].autoClickerMulti.cost.next = loadedElements[e].autoClickerMulti.cost.next;
+          this.elements = { ...this.elements, [e]: { ...loadedElements[e]}};
         }
       }
     }
-
     if (localStorage.getItem('unlockedAchievements')) {
       const unlockedAchievements = JSON.parse(localStorage.getItem('unlockedAchievements'));
       for (const uA of unlockedAchievements) {
@@ -240,6 +227,7 @@ export class AppComponent implements OnInit, OnDestroy {
     if (localStorage.getItem('ascensions')) {
       this.ascensions = JSON.parse(localStorage.getItem('ascensions'));
     }
+    this.loading = false;
   }
   private unlockAchievements() {
     for (const a of this.achievements) {
