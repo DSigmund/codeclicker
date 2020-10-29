@@ -211,7 +211,7 @@ export class AppComponent implements OnInit, OnDestroy {
     }
   }
 
-  private export() {
+  public export() {
     let encodedData = '';
     encodedData += btoa(unescape(encodeURIComponent(JSON.stringify(this.elements)))) + '#';
     encodedData += btoa(unescape(encodeURIComponent(localStorage.getItem('unlockedAchievements')))) + '#';
