@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v1.0.2 (2020-10-29)
+
+* Fixed NAN-Error
+* Added Import / Export
+* Achiements no longer overlap
+* Fixed ascensions
+
 ## v1.0.1 (2020-10-28)
 
 * Better Incremental
