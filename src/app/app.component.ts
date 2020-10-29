@@ -220,7 +220,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   public doImport() {
-    this.import(document.getElementById('importTextArea').value);
+    this.import((<HTMLInputElement>document.getElementById('importTextArea')).value);
   }
 
   private import(encodedData: string) {
