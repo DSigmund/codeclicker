@@ -57,6 +57,9 @@ footer a {
   color:white;
 }
 
+.achievements {
+  width:60%;
+}
 .achievement {
   border: 1px solid white;
   display: block;
@@ -64,7 +67,6 @@ footer a {
   margin: 5px;
   float: left;
   cursor: default;
-  width: 60%;
 }
 
 #codeBox {

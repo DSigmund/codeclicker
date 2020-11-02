@@ -9,7 +9,6 @@ import elements from '../../elements.json';
 import config from '../../config.json';
 import { Title } from '@angular/platform-browser';
 import { KeyValue } from '@angular/common';
-import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-root',
@@ -45,6 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   modalExport = false;
   modalImport = false;
+  modalReset = false;
 
   encodedString = '';
 

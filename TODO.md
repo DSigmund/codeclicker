@@ -10,11 +10,8 @@
 
 - allow disable of box in the right
 
-- harder ascension
-
 - reset add confirmation
 
-> click on "write code" button; hold enter
 
 --> 1.1
 

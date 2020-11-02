@@ -27,7 +27,7 @@
   </tr>
 </table>
 <div *ngFor="let element of elements | keyvalue: valueAscOrder" class="btn-group">
-  <button (click)="singleClick(element.key)" id="{{element.key}}Click" [disabled]="loading" *ngIf="element.value.button.unlocked">
+  <button type="button" (click)="singleClick(element.key)" id="{{element.key}}Click" [disabled]="loading" *ngIf="element.value.button.unlocked">
     {{element.value.button.title}}
     <span *ngIf="element.value.cost.value > 0">
       {{displaySingleClickCost(element.key)}}
@@ -45,7 +45,7 @@
 </div>
 <br/>
 <h2 *ngIf="achievementsUnlocked">Achievements</h2>
-<div *ngFor="let a of achievements">
+<div *ngFor="let a of achievements" class="achievements">
   <div *ngIf="a.unlocked" class="achievement">
     <span tooltip="{{a.description}}" placement="bottom">{{a.name}}</span>
   </div>
@@ -61,7 +61,7 @@
 </div>
 
 <footer>
-  <button (click)="reset()">reset</button>
+  <button (click)="modalReset = true">reset</button>
   <button (click)="export();modalExport = true">Export Data</button>
   <button (click)="modalImport = true">Import Data</button>
   <a href="https://paypal.me/DSigmund/2.50?locale.x=en_US" target="_blank" rel="noopener noreferrer">Spend a Coffee</a>
@@ -69,7 +69,7 @@
   <a href="https://www.webdad.eu/impressum.html" target="_blank" rel="noopener noreferrer">Legal</a>
   <a href="https://www.webdad.eu/datenschutz.html" target="_blank" rel="noopener noreferrer">Data Policy</a>
 </footer>
-<div id="overlay" *ngIf="modalExport || modalImport"></div>
+<div id="overlay" *ngIf="modalExport || modalImport || modalReset"></div>
 <div class="modal" id="export" *ngIf="modalExport">
   <h3>Export</h3>
   <div>Copy and Save this.</div>
@@ -84,4 +84,10 @@
   </div>
   <button (click)="modalImport = false">Cancel</button>
   <button (click)="doImport()">Import</button>
+</div>
+<div class="modal" id="reset" *ngIf="modalReset">
+  <h3>Reset</h3>
+  <div>This will Reset everything (including achievements and ascencions).</div>
+  <button (click)="modalReset = false">Cancel</button>
+  <button (click)="modalReset = false; reset()">Reset</button>
 </div>
