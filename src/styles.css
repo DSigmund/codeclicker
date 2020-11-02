@@ -82,6 +82,12 @@ footer a {
   overflow: hidden;
   overflow-wrap: anywhere;
 }
+#codeboxActiveToggle {
+  position: absolute;
+  display: block;
+  bottom: 10px;
+  right:10px;
+}
 
 .primary {
   font-weight: 600;

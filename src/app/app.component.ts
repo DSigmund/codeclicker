@@ -99,6 +99,10 @@ export class AppComponent implements OnInit, OnDestroy {
     window.location.reload();
   }
 
+  public toggleGrafics(): void {
+    this.grafics = !this.grafics;
+  }
+
   public ascend(): void {
     if (this.elements[this.primary].value >= this.ascensions.cost.next) {
       localStorage.removeItem('elements');

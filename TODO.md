@@ -4,13 +4,8 @@
 
 - better display why functions, classes ... give bonus.
 
-- replace title with popup
-
 - code-signs > add 2 more layers
 
-- allow disable of box in the right
-
-- reset add confirmation
 
 
 --> 1.1
