@@ -304,6 +304,7 @@ export class AppComponent implements OnInit, OnDestroy {
             if (this.elements[innerE].bonus && this.elements[innerE].bonus.element === e && this.elements[innerE].value > 0) {
               this.elements[e].appliedBonus += (this.elements[innerE].value / this.elements[innerE].bonus.divider);
               this.elements[e].bonusReason += this.elements[innerE].value + ' ' + this.elements[innerE].short + '; ';
+              this.elements[innerE].givenBonus = (this.elements[innerE].value / this.elements[innerE].bonus.divider);
             }
           }
         }

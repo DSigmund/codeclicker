@@ -24,10 +24,19 @@
     <td *ngIf="element.value.appliedBonus > 1" tooltip="{{element.value.bonusReason}}" [ngClass]="{'primary': element.value.primary}">
       Bonus: {{element.value.appliedBonus | humanreadablenumber}}
     </td>
+    <td *ngIf="!element.value.primary && element.value.value > 0">
+      Bonus for {{elements[primary].short}}: {{element.value.givenBonus | humanreadablenumber}}
+    </td>
   </tr>
 </table>
 <div *ngFor="let element of elements | keyvalue: valueAscOrder" class="btn-group">
-  <button type="button" (click)="singleClick(element.key)" id="{{element.key}}Click" [disabled]="loading" *ngIf="element.value.button.unlocked">
+  <button 
+    type="button" 
+    (click)="singleClick(element.key)" 
+    id="{{element.key}}Click" 
+    [disabled]="loading" 
+    *ngIf="element.value.button.unlocked"
+    (keydown.enter)="event.stopPropagation()">
     {{element.value.button.title}}
     <span *ngIf="element.value.cost.value > 0">
       {{displaySingleClickCost(element.key)}}

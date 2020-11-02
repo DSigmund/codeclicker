@@ -1,18 +1,11 @@
 # TODO
 
-- buy all button
-
-- better display why functions, classes ... give bonus.
-
-- code-signs > add 2 more layers
-
-
-
---> 1.1
-
 - mobile ready
 - metatags
 - icons / logos
+- add colors (lice code highlighting)
+- buy all buttons
+
 
 --> 1.2
 
@@ -29,5 +22,6 @@
 ---> 1.4
 
 - values to bigint: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/BigInt
+- code-signs > add 2 more layers
 
 ---> 1.5
