@@ -5,9 +5,9 @@
   "value": 0,
   "bonus": 1,
   "cost": {
-    "initial": 100000,
-    "growth": 200,
-    "next": 100000
+    "initial": 500000,
+    "growth": 300,
+    "next": 500000
   },
   "calcBonus": {
     "initial": 2,

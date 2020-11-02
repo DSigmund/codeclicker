@@ -10,8 +10,6 @@
 
 - allow disable of box in the right
 
-- put cap on it (max 10 chars each)
-
 - harder ascension
 
 - reset add confirmation
