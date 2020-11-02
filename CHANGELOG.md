@@ -4,6 +4,17 @@ All notable changes to this project will be documented in this file.
 
 it is automatically created using git tags and commit
 
+## v1.0.5 (2020-11-02)
+
+* reable
+* Added AsciiCap
+* Harder Ascensions
+* Added Reset Confirmation
+* Added Checkbox disable option
+* better checkmark design
+* Save grafics setting
+* Fixed enter bug on main button2
+
 ## v1.0.4 (2020-10-29)
 
 * Export fix
