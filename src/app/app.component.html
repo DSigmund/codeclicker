@@ -54,7 +54,7 @@
   {{ascii}}
 </div>
 <label id="codeboxActiveToggle" *ngIf="firstClick || autoClick" (click)="toggleGrafics()">Grafics
-  <input type="checkbox" checked="grafics" (click)="toggleGrafics()">
+  <input type="checkbox" [checked]="grafics" (click)="toggleGrafics()">
   <span class="checkmark"></span>
 </label>
 <div id="ascencions" *ngIf="ascensions.value > 0 || elements.linesOfCode.value >= ascensions.cost.next">

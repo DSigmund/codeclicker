@@ -101,6 +101,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   public toggleGrafics(): void {
     this.grafics = !this.grafics;
+    localStorage.setItem('grafics', this.grafics.toString());
   }
 
   public ascend(): void {
@@ -132,6 +133,7 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     }
+    this.grafics = localStorage.getItem('grafics') === 'true';
     this.load();
     this.subscription = this.source.subscribe(val => { // cycle every second
       this.unlocker();
