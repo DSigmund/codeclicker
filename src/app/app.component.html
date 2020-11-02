@@ -35,8 +35,7 @@
     (click)="singleClick(element.key)" 
     id="{{element.key}}Click" 
     [disabled]="loading" 
-    *ngIf="element.value.button.unlocked"
-    (keydown.enter)="event.stopPropagation()">
+    *ngIf="element.value.button.unlocked">
     {{element.value.button.title}}
     <span *ngIf="element.value.cost.value > 0">
       {{displaySingleClickCost(element.key)}}
