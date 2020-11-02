@@ -9,6 +9,7 @@ import elements from '../../elements.json';
 import config from '../../config.json';
 import { Title } from '@angular/platform-browser';
 import { KeyValue } from '@angular/common';
+import { threadId } from 'worker_threads';
 
 @Component({
   selector: 'app-root',
@@ -46,6 +47,8 @@ export class AppComponent implements OnInit, OnDestroy {
   modalImport = false;
 
   encodedString = '';
+
+  grafics = true;
 
 
   public constructor(private titleService: Title ) {
@@ -142,26 +145,40 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private drawASCII(): void {
-    this.ascii = '';
-    for (const e in this.elements) {
-      if (this.elements.hasOwnProperty(e)) {
-        const quotient10000 = this.elements[e].value / 10000;
-        const remainder10000 =  this.elements[e].value % 10000;
-        this.ascii += this.elements[e].ascii['10000'].repeat(quotient10000);
+    if (this.grafics) {
+      this.ascii = '';
+      for (const e in this.elements) {
+        if (this.elements.hasOwnProperty(e)) {
+          const quotient10000 = this.elements[e].value / 10000;
+          const remainder10000 =  this.elements[e].value % 10000;
+          this.ascii += this.elements[e].ascii['10000'].repeat(quotient10000);
+          if (this.ascii.length >= this.config.asciiCap) {
+            continue;
+          }
 
-        const qoutient1000 = (remainder10000 > 1) ? remainder10000 / 1000 : this.elements[e].value / 1000;
-        const remainder1000 =  remainder10000 % 1000;
-        this.ascii += this.elements[e].ascii['1000'].repeat(qoutient1000);
+          const qoutient1000 = (remainder10000 > 1) ? remainder10000 / 1000 : this.elements[e].value / 1000;
+          const remainder1000 =  remainder10000 % 1000;
+          this.ascii += this.elements[e].ascii['1000'].repeat(qoutient1000);
+          if (this.ascii.length >= this.config.asciiCap) {
+            continue;
+          }
 
-        const quotient100 = (remainder1000 > 1) ? remainder1000 / 100 : this.elements[e].value / 100;
-        const remainder100 =  remainder1000 % 100;
-        this.ascii += this.elements[e].ascii['100'].repeat(quotient100);
+          const quotient100 = (remainder1000 > 1) ? remainder1000 / 100 : this.elements[e].value / 100;
+          const remainder100 =  remainder1000 % 100;
+          this.ascii += this.elements[e].ascii['100'].repeat(quotient100);
+          if (this.ascii.length >= this.config.asciiCap) {
+            continue;
+          }
 
-        const quotient10 = (remainder100 > 1) ? remainder100 / 10 : this.elements[e].value / 10;
-        const remainder10 =  remainder100 % 10;
-        this.ascii += this.elements[e].ascii['10'].repeat(quotient10);
+          const quotient10 = (remainder100 > 1) ? remainder100 / 10 : this.elements[e].value / 10;
+          const remainder10 =  remainder100 % 10;
+          this.ascii += this.elements[e].ascii['10'].repeat(quotient10);
+          if (this.ascii.length >= this.config.asciiCap) {
+            continue;
+          }
 
-        this.ascii += this.elements[e].ascii['1'].repeat(remainder10);
+          this.ascii += this.elements[e].ascii['1'].repeat(remainder10);
+        }
       }
     }
   }

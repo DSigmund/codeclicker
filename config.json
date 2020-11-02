@@ -1,5 +1,6 @@
 {
   "title":"CodeClicker",
   "cycle": 1000,
-  "saveEvery": 10000
+  "saveEvery": 10000,
+  "asciiCap": 10
 }

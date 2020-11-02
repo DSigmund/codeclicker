@@ -8,6 +8,15 @@
 
 - code-signs > add 2 more layers
 
+- allow disable of box in the right
+
+- put cap on it (max 10 chars each)
+
+- harder ascension
+
+- reset add confirmation
+
+> click on "write code" button; hold enter
 
 --> 1.1
 
